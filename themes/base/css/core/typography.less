@@ -1,0 +1,189 @@
+// Typography
+//
+// Typography styles. These are shared with the CMS.
+//
+// Markup:
+// <h1>Heading 1</h1>
+// <h2>Heading 2</h2>
+// <h3>Heading 3</h3>
+// <h4>Heading 4</h4>
+// <p>Paragraph with <a href="#">a text link</a></p>
+// <div class="type--content">
+// <ul>
+// 	<li>Unordered list item</li>
+// 	<li>Unordered list item</li>
+// 	<li>Unordered list item</li>
+// </ul>
+// <ol>
+// 	<li>Ordered list item</li>
+// 	<li>Ordered list item</li>
+// 	<li>Ordered list item</li>
+// </ol>
+// </div>
+// <p class="type--center">Center aligned</p>
+// <p class="type--right">Right aligned</p>
+//
+// Style guide: Global.typography
+
+html {
+	// font-size: 62.5%;
+	font-size: 0.75vw;
+
+	@media @xl {
+		font-size: 62.5%;
+	}
+}
+
+body * {
+	-webkit-font-smoothing: antialiased;
+	// .font-size(16, 20);
+	color: @font-light;
+}
+
+// override default title margin
+// apply whitespaces helpers instead
+.h1, .h2, .h3, .h4, .h5, .h6, p{
+	margin: 0;
+	padding: 0;
+}
+
+.h1 {
+	.font-size(150, 165);
+	color: @color-primary;
+	font-family: @font-family-bold;
+
+	@media @md {
+		.font-size(90, 100);
+	}
+}
+
+h1 {
+	.h1();
+}
+
+.h2 {
+	.font-size(150, 165);
+	color: @color-primary;
+	font-family: @font-family-bold;
+
+	@media @md {
+		.font-size(70, 78);
+	}
+}
+
+h2 {
+	.h2();
+	font-weight: normal;
+}
+
+.h3 {
+	.font-size(45, 70);
+	color: @color-primary;
+	font-family: @font-family-bold;
+}
+
+h3 {
+	.h3();
+	font-weight: normal;
+}
+
+.h4 {
+	.font-size(80, 90);
+	color: @color-primary;
+	font-family: @font-family-bold;
+
+	@media @md {
+		.font-size(30, 35);
+	}
+}
+
+h4 {
+	.h4();
+}
+
+.h5 {
+	.font-size(60, 80);
+	color: @color-primary;
+	font-family: @font-family-bold;
+
+	@media @md {
+		.font-size(20, 27);
+	}
+}
+
+h5 {
+	.h5();
+}
+
+.h6 {
+	.font-size(38, 52);
+	color: @color-quinary;
+	text-transform: uppercase;
+	font-family: @font-family-bold;
+	letter-spacing: 0.1rem;
+
+	@media @md {
+		.font-size(14, 12);
+	}
+}
+
+h6 {
+	.h6();
+}
+
+p, .text {
+	.font-size(38, 60);
+	font-family: @font-family-light;
+	color: @color-quaternary;
+
+	@media @md {
+		.font-size(16, 26);
+	}
+}
+
+a {
+	.font-size(38, 60);
+	color: @color-primary;
+	text-decoration: none;
+	transition: color 0.3s ease-in-out;
+
+	&:focus, &:active{
+		outline : none;
+	}
+
+	@media @md {
+		.font-size(16, 26);
+	}
+}
+
+// Editable content
+// ==========================================================================
+// For blocks with CMS content where things like lists need to be styled.
+
+.type--content,
+.mceContentBody
+ {
+	ul {
+		list-style-type: disc;
+	}
+	ul, ol {
+		list-style-position: outside;
+		margin: 0 0 1.8rem 1.6rem;
+		padding: 0;
+
+		li {
+			p {
+				.ie8 &,
+				.ie9 &,
+				.ie10 & {
+					display: inline;
+				}
+			}
+		}
+	}
+
+	a {
+		font-size: inherit;
+		line-height: inherit;
+	}
+}

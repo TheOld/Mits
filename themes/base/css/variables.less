@@ -1,0 +1,55 @@
+// ==========================================================================
+// General Variables
+// ==========================================================================
+// Consider using these non-specific variable names:
+// e.g. @color-primary, @color-secondary, @color-tertiary, @color-quaternary,
+// @color-quinary, @color-senary, @color-septenary, @color-octonary, @color-nonary, @color-denary
+
+// General colours
+@color-brand: #ed0000;
+@color-primary: #000000;
+@color-secondary: #ffffff;
+@color-tertiary: #272727;
+@color-quaternary: #838383;
+@color-quinary: #bfbfbf;
+@color-senary: #0d191f;
+@color-septenary: #f6f6f6;
+
+// Font colours
+@font-light: #fcfcfc;
+
+// State colours
+@color-success: #4caf50;
+@color-error: #f44336;
+@color-disabled: #333333;
+@color-inactive: #cccccc;
+
+// Font Families
+@font-family-light: 'AvantGarde-Medium', Helvetica, Arial, sans-serif;
+@font-family-regular: 'AvantGarde-Demi', Helvetica, Arial, sans-serif;
+@font-family-bold: 'AvantGarde-Bold', Helvetica, Arial, sans-serif;
+@font-family-black: 'AvantGarde-Bold', Helvetica, Arial, sans-serif;
+
+// Progress bar colour
+@color-progress: @color-brand;
+
+// Units
+@border-radius: 0.4rem;
+@skewed-tile-whitespace: 8.5%;
+@mobile-gutter: 4rem;
+
+// Easing
+@bezier: cubic-bezier(0.120, 0.825, 0.230, 1.000);
+
+// Directories
+// This should be prefixed to all asset urls
+// @example: "@{dir-theme}images/yourimage.jpg"
+@dir-theme: "/themes/"; // Theme
+@dir-base: "@{dir-theme}base/";
+
+@dir-images: "@{dir-base}images/"; // Images
+@dir-fonts: "@{dir-base}fonts/"; // Fonts
+
+// import breakpoints because js components need
+// access to mediaquerries
+@import "core/breakpoints.less";

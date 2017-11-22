@@ -1,0 +1,69 @@
+// ==========================================================================
+// Price
+// ==========================================================================
+
+// block
+.price{
+	font-family: @font-family-bold;
+	position: relative;
+}
+
+// elements
+.price__label{
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+	display: block;
+	color: @color-quaternary;
+}
+
+.price__amount{
+	color: @color-primary;
+	.font-size(100, 100);
+	display: block;
+
+	@media @md {
+		.font-size(45, 45);
+	}
+}
+
+.price__conditions{
+	color: @color-primary;
+	font-family: @font-family-light;
+	font-size: 4rem;
+	line-height: 4rem;
+	display: block;
+	white-space: nowrap;
+
+	@media @md {
+		font-size: 1.5rem;
+		line-height: 1.5rem;
+	}
+}
+
+// modifiers
+.price--inline{
+	@media @md {
+		.price__amount{
+			display: inline-block;
+		}
+		.price__conditions{
+			display: inline-block;
+			line-height: 0.5rem;
+			margin-left: 0.5rem;
+			margin-top: 1rem;
+			position: absolute;
+		}
+	}
+}
+
+.price--light{
+	.price__amount, .price__conditions{
+		color: @color-secondary;
+	}
+}
+
+.price--offer{
+	.price__amount{
+		color: @color-brand;
+	}
+}

@@ -1,0 +1,49 @@
+// ==========================================================================
+// Background title
+// ==========================================================================
+
+// block
+.background-title{
+	.vertical-align(absolute);
+	left: 0;
+	width: 100%;
+	color: @color-quinary;
+	display: flex;
+	justify-content: center;
+	font-family: @font-family-bold;
+	pointer-events: none;
+
+	span, li{
+		opacity: 0.05;
+		font-size: 15vw;
+	}
+}
+
+// modifiers
+.background-title--medium{
+	span, li{
+		font-size: 12vw;
+	}
+}
+
+.background-title--small{
+	span, li{
+		font-size: 8vw;
+	}
+}
+
+.background-title--large{
+	span, li{
+		font-size: 20vw;
+	}
+}
+
+.background-title--top{
+	top: 25%;
+}
+
+.background-title--dark{
+	span, li{
+		color: @color-primary;
+	}
+}

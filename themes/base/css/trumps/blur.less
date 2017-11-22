@@ -1,0 +1,18 @@
+// ==========================================================================
+// Apply blur to an element
+// ==========================================================================
+
+.blur(@blur: 10px){
+	// filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='@blur');
+	// filter: blur(@blur);
+	// transition: 0.4s filter @easeMitsubishi;
+	// transition-delay: 0.1s;
+
+	&:before{
+		opacity: 1;
+	}
+}
+
+.blur{
+	.blur();
+}

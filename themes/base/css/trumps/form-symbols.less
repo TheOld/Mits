@@ -1,0 +1,46 @@
+// ==========================================================================
+// Form symbols (required, checked...)
+// ==========================================================================
+
+.form-symbol-required(@color: @color-brand){
+	font-size: 2.6rem;
+	&:extend(.icon-circle all);
+	&:before{
+		margin: 0 1.5rem;
+		color: @color;
+		transform: scale(0.7);
+	}
+
+	@media @md{
+		font-size: 1.2rem;
+
+		&:before{
+			margin: 0 0.6rem;
+		}
+	}
+}
+
+.form-symbol-required{
+	.form-symbol-required();
+}
+
+.form-symbol-check(@color: @color-brand){
+	font-size: 2.6rem;
+	&:extend(.icon-tick all);
+	&:before{
+		margin: 0 1.5rem;
+		color: @color;
+	}
+
+	@media @md{
+		font-size: 1.2rem;
+
+		&:before{
+			margin: 0 0.6rem;
+		}
+	}
+}
+
+.form-symbol-check{
+	.form-symbol-check();
+}

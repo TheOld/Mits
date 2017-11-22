@@ -1,0 +1,45 @@
+// ==========================================================================
+// Vehicle feature
+// ==========================================================================
+
+// block
+.vehicle-feature-description{
+	position: relative;
+}
+
+// elements
+.vehicle-feature-description__image{
+	height: 0;
+	overflow: hidden;
+	position: relative;
+	padding-bottom: 100%;
+
+	img{
+		width: 100%;
+		height: auto;
+	}
+}
+
+.vehicle-feature-description__content{
+	color: @color-quaternary;
+	display: block;
+	margin: 0;
+}
+
+.vehicle-feature-description__label{
+	display: block;
+	color: @color-quaternary;
+	text-transform: uppercase;
+}
+
+// modifiers
+.vehicle-feature-description--vertical{
+	.vehicle-feature-description__label{
+		position: absolute;
+		transform: rotate(-90deg) translateY(-150%);
+		padding-left: 1rem;
+		padding-top: 0;
+		padding-bottom: 0;
+		transform-origin: left top;
+	}
+}

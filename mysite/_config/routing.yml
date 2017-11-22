@@ -1,0 +1,10 @@
+---
+Name: customroutes
+---
+SilverStripe\Control\Director:
+  rules:
+    'builder//$Action/$Vehicle/$Model': MitsubishiMotors\Controllers\VehicleBuilderController
+    'compare//$Action/$Model1/$Model2': MitsubishiMotors\Controllers\VehicleComparisonController
+    'graph-auth//$Action': MitsubishiMotors\Auth\GraphQLAuthenticationController
+    'search//$Action': MitsubishiMotors\Controllers\SearchController
+    'spec//$Action/$Model': MitsubishiMotors\Controllers\SpecController

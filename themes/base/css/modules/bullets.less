@@ -1,0 +1,49 @@
+// ==========================================================================
+// Bullet (use for navigation purposes)
+// ==========================================================================
+
+// block
+.bullets{
+	font-size: 0;
+}
+
+// elements
+.bullets__item{
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+	margin-right: 2rem;
+	background: @color-quinary;
+	border-radius: 100%;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+
+	&:hover{
+		background: fade(@color-primary, 50%);
+	}
+
+	@media @md {
+		width: 1rem;
+		height: 1rem;
+		margin-right: 1rem;
+	}
+}
+
+// modifiers
+.bullets--light{
+	.bullets__item{
+		background:fade(@color-septenary, 25%);
+
+		&:hover{
+			background:fade(@color-septenary, 80%);
+		}
+
+		&--active{
+			background: @color-septenary;
+		}
+	}
+}
+
+.bullets__item--active{
+	background: @color-primary;
+}

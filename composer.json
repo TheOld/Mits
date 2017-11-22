@@ -1,0 +1,59 @@
+{
+    "name": "MMNZ - SS4",
+    "description": "Mitsubishi Motors new Zealand",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages:satis@packages.heyday.net.nz/"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/heyday/silverstripe-dominantcolor/"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "^4.0.0",
+        "silverstripe/cms": "^4.0.0",
+        "colymba/gridfield-bulk-editing-tools": "3.*",
+        "heyday/silverstripe-redirects": "dev-master",
+        "heyday/silverstripe-hashpath": "dev-master",
+        "heyday/silverstripe-cacheinclude": "dev-ss4-upgrade",
+        "heyday/silverstripe-menumanager": "^3.0",
+        "heyday/silverstripe-templatehelpers": "2.0.2",
+        "symbiote/silverstripe-gridfieldextensions": "^3.0",
+        "heyday/silverstripe-analytics": "dev-ss4-upgrade",
+        "silverstripe/graphql-devtools": "dev-master",
+        "guzzlehttp/guzzle": "^6.3",
+        "mobiledetect/mobiledetectlib": "^2.8",
+        "burnbright/silverstripe-hasonefield": "dev-master",
+        "stevie-mayhew/silverstripe-svg": "dev-ss4-upgrade",
+        "jacobbuck/silverstripe-dominantcolor": "dev-upgrade/silverstripe-4.0",
+        "tractorcow/silverstripe-colorpicker": "dev-master",
+        "heyday/silverstripe-elastica": "~2.0",
+        "sentry/sentry": "1.7.0",
+        "silverware/admin": "1.0.4",
+        "firesphere/silverstripe-graphql-jwt": "^1.0@dev"
+    },
+    "require-dev": {
+        "heyday/silverstripe-wkhtml": "dev-ss4-upgrade"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "MitsubishiMotors\\": "mysite/code/"
+        }
+    },
+    "extra": {
+        "project-files-installed": [
+            ".htaccess",
+            "index.php",
+            "install-frameworkmissing.html",
+            "install.php",
+            "mysite/.htaccess",
+            "mysite/_config.php",
+            "mysite/_config/mysite.yml",
+            "web.config"
+        ]
+    }
+}

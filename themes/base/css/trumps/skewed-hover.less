@@ -1,0 +1,25 @@
+// ==========================================================================
+// Skewed hover
+// ==========================================================================
+
+.skewed-hover{
+	&:after{
+		content: '';
+		position: absolute;
+		height: 0.5rem;
+		width: 100%;
+		bottom: -0.1rem;
+		left: 0;
+		background: @color-brand;
+		transform: skew(0) scaleX(0);
+		transform-origin: left;
+		transition: all 0.2s 0.1s;
+		will-change: scaleX;
+	}
+
+	&.current, &--active, &:hover{
+		&:after{
+			transform: skew(-25deg) scaleX(1);
+		}
+	}
+}

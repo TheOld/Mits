@@ -1,0 +1,77 @@
+// ==========================================================================
+// Accordion
+// ==========================================================================
+
+// block
+.accordion{
+	text-align: left;
+}
+
+// elements
+.accordion__title{
+	position: relative;
+	transition: all 0.2s ease;
+
+	i{
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+
+		&:before, &:after{
+			transition: all 0.2s ease;
+			content: "";
+			position: absolute;
+			background-color: @color-primary;
+			width: 3px;
+			height: 9px;
+		}
+
+		&:before{
+			transform: translate(-2px , 0) rotate(-45deg);
+		}
+
+		&:after{
+			transform: translate(2px , 0) rotate(45deg);
+		}
+	}
+}
+
+.accordion__content{
+	height: 0;
+	overflow: hidden;
+}
+
+.accordion__item{
+	justify-content: center;
+	display: block;
+	cursor: pointer;
+	position: relative;
+	.gradient-border;
+
+	&:last-child:after{
+		display: none;
+	}
+}
+
+// modifiers
+.accordion__item--active{
+	.accordion__title{
+		color: @color-brand;
+	}
+	.accordion__content{
+		height: auto;
+		margin-bottom: 2rem;
+	}
+	i{
+		&:before{
+			background-color: @color-brand;
+			transform: translate(-2px , 0) rotate(45deg);
+		}
+
+		&:after{
+			background-color: @color-brand;
+			transform: translate(2px , 0) rotate(-45deg);
+		}
+	}
+}

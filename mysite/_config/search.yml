@@ -1,0 +1,117 @@
+---
+Name: search
+After: 'framework/*'
+---
+SilverStripe\Core\Injector\Injector:
+  MitsubishiMotors\Controllers\SearchController:
+    properties:
+      SearchService: %$Heyday\Elastica\ElasticaService
+
+#########DATA_OBJECTS#########
+MitsubishiMotors\DataObjects\Slice:
+  extensions:
+    - Heyday\Elastica\Searchable
+  indexed_fields:
+    - Title
+    - Subtitle
+    - Blurb
+    - Copy
+    - Image2Title
+    - Image2Subtitle
+    - Image2Copy
+  dependent_classes:
+    - MitsubishiMotors\Pages\Page
+
+#########PAGE_TYPES#########
+
+MitsubishiMotors\Pages\Page:
+  extensions:
+    - Heyday\Elastica\Searchable
+  indexed_fields:
+    - Title
+    - MetaDescription
+    - Content
+    - BannerTitle
+    - BannerSubtitle
+    - Slices
+
+MitsubishiMotors\Pages\VehiclePage:
+  indexed_fields:
+    - Title
+    - MetaDescription
+    - Content
+    - BannerTitle
+    - BannerSubtitle
+    - Slices
+    - OverviewTitle
+    - OverviewSubtitle
+    - OverviewIntro
+    - ColourTitle
+    - ColourSubtitle
+    - ColourIntro
+
+###########################
+###ELASTIC SEARCH CONFIG###
+###########################
+
+Heyday\Elastica\ElasticaService:
+  index_config:
+    analysis:
+      analyzer:
+        default :
+          type : custom
+          tokenizer : standard
+          filter :
+            - standard
+            - lowercase
+            - stemming_filter
+      filter:
+        stemming_filter:
+          type: snowball
+          language: English
+
+---
+Only:
+  environment: dev
+---
+SilverStripe\Core\Injector\Injector:
+  Elastica\Client:
+    constructor:
+      - host: localhost
+        port: 9200
+
+  Heyday\Elastica\ElasticaService:
+    constructor:
+      - %$Elastica\Client
+      - mmnz-search-dev
+
+---
+Only:
+  environment: test
+---
+SilverStripe\Core\Injector\Injector:
+  Elastica\Client:
+    constructor:
+      - host: localhost
+        port: 9200
+
+  Heyday\Elastica\ElasticaService:
+    constructor:
+      - %$Elastica\Client
+      - mmnz-search-test
+
+---
+
+Only:
+  environment: live
+---
+SilverStripe\Core\Injector\Injector:
+  Elastica\Client:
+    constructor:
+      - host: localhost
+        port: 9200
+
+  Heyday\Elastica\ElasticaService:
+    constructor:
+      - %$Elastica\Client
+      - mmnz-search-live

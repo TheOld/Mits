@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Heyday style guide template">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>Style guide</title>
+	<link rel="stylesheet" href="kss-assets/kss.css">
+	<link rel="stylesheet" href="../../themes/base/build/bundle-style.css">
+
+</head>
+<body class="kss" id="kss-node">
+	<aside class="kss__sidebar">
+		<nav class="kss__nav">
+			<a href="index.html" class="logo">
+				Style guide
+			</a>
+			<ul class="kss__navmenu">
+					<li class="kss__navmenuitem">
+						<a class="" href="section-components.html">Components </a>
+					</li>
+					<li class="kss__navmenuitem">
+						<a class="" href="section-docs.html">Docs </a>
+					</li>
+					<li class="kss__navmenuitem">
+						<a class="" href="section-global.html">global </a>
+					</li>
+					<li class="kss__navmenuitem">
+						<a class="" href="section-global.html">Global </a>
+					</li>
+			</ul>
+		</nav>
+	</aside>
+	<main class="kss__main " role="main">
+		<article class="kss__content">
+				<section class="kss__section">
+					<div class="kss__guide">
+						<div class="kss__guidecontent">
+							<h1 id="less-standards">Less Standards</h1>
+<blockquote>
+<p>See BEM and Style Guide standards below</p>
+</blockquote>
+<p>Less fun; more less, less confusion.</p>
+<h3 id="file-structure">File Structure</h3>
+<h3 id="general-files">General files</h3>
+<p><strong>core/layout.less</strong>
+The layout file is for high level layout based styles. These will largely be the grid and any container styles required.</p>
+<p><strong>core/typography.less</strong>
+The typography file is for type styles. These will be defined as modules so that the styles can be easily extended in later phases of the project.</p>
+<p>For more specific instructions see Modular typography styles</p>
+<h3 id="module-files">Module files</h3>
+<p><strong>modules/module.less</strong>
+Every module or block level component that is created within a project should have it&#39;s own designated file. The file should be named the same as the module itself and only include styles specific to said module.</p>
+<h3 id="utility-files">Utility files</h3>
+<p><strong>variables.less</strong>
+The variables file is to house global variables and make them accessible from each of the general or module files. This includes the basic grid structure, breakpoints, theme colours and the <code>/themes</code> directory reference.</p>
+<p>The variables file and the typography file are combined in the editor.less file which is included in Silverstripe to add theme styles to the WYSIWYG editor.</p>
+<p><strong>mixins.less</strong>
+The mixins file is for all global mixins that are used for things such as vendor prefixing or fixes. Mixins that are specific to a module or section should go into their respective files. Mixins in this file need not be prefixed with the file code.</p>
+<p><strong>core/helpers.less</strong>
+The helpers file is for classes that would be considered helpers. They are element agnostic and perform a specific task that is oft repeated within a project.</p>
+<p><strong>core/print.less</strong>
+The print file is the default styles that are used for printing. This is primarily from the HTML5BP.</p>
+<h3 id="generate-files">Generate files</h3>
+<p><strong>style.less</strong>
+The style file is used to import all other files and generate the base style.css file. Any project specific comments should not be added in the head block comment in this file, but rather the themes base README.md file</p>
+<p><strong>style-min.less</strong>
+The style-min file is used to generate the minified css used in production.</p>
+<hr>
+<h1 id="bem">BEM</h1>
+<p>Here lies BEM naming conventions specific to Heyday projects and basic CSS/Markup standards.</p>
+<p><strong>Background (if you&#39;re interested)</strong></p>
+<p>BEM naming conventions are based on //Block, Element, Modifier// structure. A quick google will return the following:</p>
+<pre><code>.block {
+  .block__element {
+  }
+  &amp;.block--open {
+  }
+}
+</code></pre><p>and if you want even //more// info, go here: <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/</a></p>
+<p><strong>Some basic standards</strong></p>
+<p>There is more to BEM than a descriptive way to name modules and elements. There are some important things to note in the structure of your markup, and also the structure in your less. </p>
+<p>First of all, your Block module should have an overarching name specific to that block, not specific to the location on the page it lies. For example, we have a search field in the header:</p>
+<pre><code>&lt;div class=&quot;header header--fixed&quot;&gt;
+  &lt;div class=&quot;searchform&quot; /&gt;
+&lt;/div&gt;
+</code></pre><p>and your less file?</p>
+<pre><code>.header {
+  .searchform {
+  }
+}
+</code></pre><p>Holy hell is this ever so wrong! What happens when the client decides the search is best off in the footer??? What we need is two seperate modules; .header and .searchform. Each should have it&#39;s own specific less file.</p>
+<pre><code>.header {
+  &amp;.header--fixed {
+  }
+}
+</code></pre><pre><code>.searchform {
+  .searchform__input {
+  }
+}
+</code></pre><p>Second, each child of that block should be prefixed with <em>block-name</em>__ .</p>
+<p>And third, each modifier of any element needs the prefix of that elements class. </p>
+<p>Note that the majority of modifiers should happen //at block level//. That is, the overarching parent should hold the state of the block, child deviations can all be based off this modifier, with the exception of elements with siblings. ie a current page link in a ul: list_ <em>item list</em> _item--current</p>
+<p><strong>&quot;How is Markup effected?&quot; I hear you mull in your headspace</strong></p>
+<p>Class names should be clearly grouped at a block level. Ideally it would be nice to have these ordered by specificity. 
+[ &quot;Element&quot; &quot;Modifier&quot; ]<em> [ &quot;Block&quot;/&quot;Element&quot; &quot;Modifier&quot; ] [ &quot;Layout&quot; ] [ &quot;Typography&quot; ]
+</em>where this block is also an element of another block
+For example (this is overly complicated for a reason):</p>
+<pre><code>&lt;div class=&quot;sidebar sidebar--inactive layout__padding--bottom type&quot;&gt;
+  &lt;h3 class=&quot;sidebar__label type--dark&quot;&gt;
+    Cookbooks
+  &lt;/h3&gt;
+  &lt;ul class=&quot;sidebar__list nav nav--vertical nav--sidebar type--center&quot;&gt;
+    &lt;li class=&quot;nav__item&quot;&gt;
+      Dinners for singles
+    &lt;/li&gt;
+    &lt;li class=&quot;nav__item nav__item--current&quot;&gt;
+      Eating alone again
+    &lt;/li&gt;
+    &lt;li class=&quot;nav__item&quot;&gt;
+      How to make a lasagne for one
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;h3 class=&quot;sidebar__label type--dark&quot;&gt;
+    Friendzoned
+  &lt;/h3&gt;
+  &lt;ul class=&quot;sidebar__list type--center&quot;&gt;
+    &lt;li&gt;
+      We can make it together!
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+</code></pre><p>From this we can easily denote that this is a sidebar. It&#39;s state is inactive. It has two children: .sidebar_ <em>label, sidebar</em> _list. It has a bit of padding at the bottom and inherits the default .type styles (formerly .t-content)
+One ul has styles specific to this sidebar block, however is also a module that may also be used in the header and this is the vertical version of that module.
+It has three children, one of which has an active state.</p>
+<p>As far as less is structured, both of the modules .sidebar and .nav have separate less files and are considered independent of each other. With that said, in this particular case there is opportunity to bridge the two modules. That is, if we have specific changes to .nav elements that only apply when this block is used as a child of .sidebar. </p>
+<pre><code>.sidebar .nav {
+  // Specific styling
+}
+</code></pre><blockquote>
+<p>NOTE: that this breaks out of the concept of modules and creates a bit of a conflict mess (does this code go in sidebar.less or nav.less???) and opens the door to element specificity issues. Therefore, this approach is to be used only in very specific circumstances. A much more ideal approach would be to create a modifier of .nav which can be used in this scenario ( and potentially again elsewhere ), ie nav--sidebar.</p>
+</blockquote>
+<p><strong>Specificity and nesting</strong></p>
+<p>This one goes a bit without saying, but we should be nesting each element within a block //as if they were siblings//. </p>
+<p>What is nice and avoids bad specificity but is still easy to read:</p>
+<pre><code>.heyday {
+  .heyday__mr1 {
+    border: 1px solid white;
+    padding: ~2m ~3m;
+  }
+  .heyday__mr3 {
+    border: 1px solid white;
+    border-bottom: 1px solid autumn-orange;
+    padding: 0px;
+  }
+  .heyday__meetingchair {
+    color: blue-ish;
+    comfort: 0;
+  }
+  .heyday__table {
+    color: white;
+    height: @only-just-enough;
+  }
+  .heyday__mr1--used {
+    .heyday__table {
+      content: &#39;empty glasses, half-done water, coffee cups etc&#39;;
+    }
+    .heyday__meetingchair {
+      temperature: @warm-and-awkward;
+    }
+  }
+  .heyday__mr1--cleaned {
+    .heyday__table {
+      content: &#39;chocolates&#39;;
+    }
+  }
+}
+</code></pre><p>bad specificity: </p>
+<pre><code>.heyday {
+  .heyday__mr1 {
+    &amp;.heyday__mr1--inuse {
+      .heyday__table {
+        .heyday__meetingchair {
+          content: &#39;someones butt&#39;;
+        }
+      }
+    }
+  }
+}
+</code></pre><p>What the flip, this is cray. 
+Reasons why this is bad:
+ 1, it is.</p>
+<p>What happens on .heyday--awayday??? The content: in .heyday_ _meetingchair will be &#39;&#39;; but how to we override this mess?</p>
+<pre><code>.heyday {
+  &amp;.heyday--awayday {
+    .heyday__mr1 {
+      .heyday__table {
+        .heyday__meetingchair {
+          content: &#39;&#39;;
+        }
+      }
+    }
+  }
+}
+</code></pre><p>No thanks.</p>
+<p><strong>More specific specificity</strong></p>
+<p>I&#39;m bringing !important back, yea! And all your cascades don&#39;t know how to act, yea!
+Just cause, it&#39;s actually important and serves a purpose. 
+What it&#39;s //not// intended for: Overriding overly specific selectors. Reversing the cascade. <strong>Fixing bugs.</strong>
+What it //is// intended for: Pre-conceptualised styles.
+The truth is, there is nothing wrong with !important. In fact at times it can save browser load speed by avoiding searching for selectors which styles are already overridden by !important (in certain cases).
+Think, at the moment the grid is a pixel calculated class system, and perhaps there is a use-case scenario where we want to specify an 80% width on an element nested in a full width grid...</p>
+<pre><code>.layout__percent--80 {
+  width: 80% !important;
+}
+</code></pre><p>BAM, that design faux pas which lies just slightly outside of the grid but is all important can be solved without specifying a location, module, or really anything, and can be used in any scenario without a fuss.</p>
+<pre><code>.hidden {
+  display: none !important;
+}
+</code></pre><p>BLIMBAM, flippin&#39; the javascript on your global.css? Just class that shit up. ( Yea I&#39;m talking inline styles... If it doesn&#39;t change sporatically, it should .addClass(), amirite? )</p>
+<pre><code>.Timberland {
+    content: &#39;Yeah!&#39;;
+    color: #000000;
+    background: url(&#39;../sampling-one-word/into-a-track.jpg&#39;) repeat !important;
+}
+.me {
+  color: #ffffff;
+  &amp;:before {
+    background: none;
+  }
+  &amp;.me--bringing {
+    background: url(&#39;../sexy.png&#39;); 
+  }
+  &amp;:after {
+    .Timberland;
+  }
+}
+.them {
+  .them__other {
+    display: inline;
+  }
+  .them__other--boys {
+     content: &#39;don\&#39;t know how to act&#39;;
+  }
+  &amp;:after {
+    .Timberland;
+  }
+}
+</code></pre><blockquote>
+<p>NOTE: that !important styles should be used on a global level, not within any individual modules. It should have the ability to be used at any point in time, on any element, carrying a small style component specific to it&#39;s name. Two of the examples above suffice, I will let you decide.</p>
+</blockquote>
+<p><strong>Layout and typography</strong></p>
+<p>Of course this all means that l- and t- class prefixes will need to be revisited (proposing we duplicate these styles initially while the new conventions are adopted). Big surprise, these should be renamed as &quot;layout&quot; and &quot;type&quot;.
+.type will hold the styles generically applied to content areas, with modifiers not necessarily needed to be nested within or coupled by the .type class. For example the following .type is considered a stand alone class:</p>
+<pre><code>&lt;div class=&quot;layout__center&quot;&gt;
+  &lt;p class=&quot;type--dark&quot;&gt;Lasagne leftovers for lunch the next day.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre><blockquote>
+<p>NOTE: layout and typography files to be generated.</p>
+</blockquote>
+<p><strong>file layout</strong></p>
+<p>There are times when it can become confusing as to which selectors sit where in a file so that more specific elements don&#39;t override each other. The idea is that the higher the level of modifier, the greater influence it should have. Let&#39;s take a look!</p>
+<pre><code>.navigation {
+
+  /* here&#39;s my pretty cool nav list. It&#39;s has a pretty pink background colour. */
+  .navigation__list {
+    background: pink af;
+  }  
+
+  /* and my vertical navigation modifier just for shits and gigs */
+  &amp;.navigation--vertical  {
+     .navigation__item {
+       margin-bottom: 10px;
+     }
+  }
+
+  /* OHHH SNAP, checkit: */
+  .navigation__item {
+    &amp;.navigation__item--padded {
+      margin: 0px 15px;
+      padding: 0px 10px;
+    }
+  }
+
+
+}
+</code></pre><p>.navigation__item--padded takes the cake, overrides the margin in a vertical navigation and makes the world a shitty place in general. We can fix this, because we don&#39;t want to create another rule that does the same thing again just in the specific case that we want a padded item in a vertical list. Let&#39;s have another looksee:</p>
+<pre><code>.navigation {
+
+  .navigation__list {
+    background: pink af;
+  }
+
+  /* This looks legit af */
+  .navigation__item {
+    color: purple af;
+    &amp;.navigation__item--padded {
+      display: inline;
+      margin: 0px 15px;
+      padding: 0px 10px;
+    }
+  }
+
+  /* This also looks legit af */
+  &amp;.navigation--vertical  {
+     .navigation__item {
+       display: block;
+       margin-bottom: 10px;
+     }
+  }
+
+}
+</code></pre><p>Now the more global modifier should take precedence, which is what we want. One global HTML change to adopt the styles we want, and resets back to less specific modifier styles should they be needed, and then back to the original declaration.</p>
+<hr>
+<h1 id="style-guide">Style Guide</h1>
+<p>So style guides are pretty important in big ass projects, and now there&#39;s an easy way to get them set up!</p>
+<p>If you haven&#39;t already, you need to run:</p>
+<pre><code>gem install hologram
+</code></pre><p>Do it now, I can wait.</p>
+<p>Next you need to add the style-guide package to your project. It&#39;s as easy as adding this to your composer.json file:</p>
+<pre><code>&quot;require-dev&quot;: {
+  &quot;hamishLamb/style-guide&quot;: &quot;dev-master&quot;
+}
+</code></pre><p>then running a composer update. (at the time of this articles creation, the package was still sitting in my private account... so I trust by now I&#39;ve added it to the heyday packages repo thingamajig... if not, add the below to your composer.json file in the &#39;repositories&#39; section)</p>
+<pre><code>{
+  &quot;type&quot;: &quot;git&quot;,
+  &quot;url&quot;: &quot;https://github.com/hamishLamb/style-guide.git&quot;
+}
+</code></pre><p>Within the package, there are two config files in the /config directory. A Gemfile and a hologram_config.yml file. Copy these files out into the root of your project. </p>
+<p>Now the fun part, whenever you add a new less module or typography or similar, add the following doc comment block to the top of the file:</p>
+<pre><code>/*doc
+---
+title: Alert
+name: alert
+category: basics
+---
+ ```html_example
+    &lt;div class=&#39;alert&#39;&gt;Hello&lt;/div&gt;
+ ``` 
+*/
+</code></pre><p>This creates a new block for the style guide which renders using the projects VERY OWN STYLESHEET, dayum... Each block needs a different title and name, then simply add in your html markup and bam, done, so easy.</p>
+<p>Then, build hologram by running the following command from the root of the project (you need to do this after every change):</p>
+<pre><code>hologram
+</code></pre><p>Next up is creating a javascript/react component page - I will get back to you on this but in the meantime feel free to keep using the basics category.</p>
+<p>View your style guide by visiting <a href="http://project.dev/style-guide/index.html">http://project.dev/style-guide/index.html</a></p>
+<p>If in doubt, read the README.md (don&#39;t read it on github because the example doc comment gets rendered as markdown and you can&#39;t copy that shiz... NEVERMIND I GONE FIXED IT).</p>
+<blockquote>
+<p>NOTE: the hologram config is set up for our base silverstripe setup, feel free to mess with it in your own project if it&#39;s not silverstripe, or is using a different theme etc. If in doubt, check the repo: <a href="https://github.com/trulia/hologram">https://github.com/trulia/hologram</a> or ask Hamish</p>
+</blockquote>
+
+						</div>
+					</div>
+				</section>
+		</article>
+	</main>
+
+	<!-- SCRIPTS -->
+	<script src="kss-assets/kss.js"></script>
+	<script src="kss-assets/scrollspy.js"></script>
+	<script src="kss-assets/prettify.js"></script>
+	<script>
+		prettyPrint();
+		var spy = new ScrollSpy('#kss-node', {
+			nav: '.kss-nav__menu-child > li > a',
+			className: 'is-in-viewport'
+		});
+	</script>
+	<script src="../../themes/base/build/bundle-vendor.js"></script>
+<script src="../../themes/base/build/bundle-head.js"></script>
+<script src="../../themes/base/build/bundle-index.js"></script>
+
+
+	<!-- Automatically built using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+</body>
+</html>

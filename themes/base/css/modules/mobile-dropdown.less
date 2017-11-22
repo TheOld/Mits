@@ -1,0 +1,26 @@
+// ==========================================================================
+// Dropdown
+// ==========================================================================
+
+// block
+.mobile-dropdown{
+	background-image: url('@{dir-images}core/select-light.png');
+	background-color: @color-brand;
+	background-position: 96% 50%;
+	background-repeat: no-repeat;
+	background-size: 3rem 2.1rem;
+	color: @color-secondary;
+	text-align: center;
+	z-index: 10;
+	display: block;
+	border-radius: 0.2rem;
+
+	.my-dropdown-dd{
+		display: block;
+		width: 100%;
+		left: 0 !important;
+		background-color: @color-brand;
+		z-index: 1;
+		will-change: transform;
+	}
+}

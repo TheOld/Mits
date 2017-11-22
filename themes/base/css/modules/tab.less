@@ -1,0 +1,123 @@
+// ==========================================================================
+// Tab
+// ==========================================================================
+
+// block
+.tab{
+	display: inline-block;
+	font-family: @font-family-bold;
+	line-height: 3rem;
+	border-bottom: 1px solid fade(#12151a, 20%);
+}
+
+// element
+.tab__item{
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	.skewed-hover;
+}
+
+.tab__link{
+	padding: 2rem 4rem;
+	display: block;
+	position: relative;
+
+	&:after{
+		content: '';
+		position: absolute;
+		height: 0.5rem;
+		width: 100%;
+		bottom: -0.1rem;
+		left: 0;
+		background: @color-brand;
+		transform: skew(0) scaleX(0);
+		transform-origin: center center;
+		transition: all 0.2s;
+	}
+}
+
+// modifiers
+.tab--light{
+	border-bottom: 1px solid fade(@color-secondary, 20%);
+	.tab__link{
+		color: fade(@color-secondary, 20%);
+	}
+
+	.tab__item{
+		color: fade(@color-secondary, 20%);
+
+		&--active{
+			.tab__link{
+				color: @color-secondary;
+			}
+		}
+	}
+}
+
+.tab--fullwidth{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.tab--fade{
+	.tab__item{
+		transition: opacity 0.2s @easeMitsubishi, margin 0.5s @easeMitsubishi;
+		opacity: 0.5;
+
+		&--active{
+			opacity: 1;
+		}
+	}
+}
+
+.tab--last{
+	.tab__item{
+		&:after {
+			transform: skew(0) scaleX(0);
+		}
+
+		&--last:after{
+			transform: skew(-25deg) scaleX(1);
+		}
+
+		&:hover{
+			opacity: 1;
+
+			&:after{
+				transform: skew(-25deg) scaleX(1);
+			}
+		}
+	}
+}
+
+.tab--even{
+	flex-wrap: nowrap;
+	display: flex;
+	overflow: hidden;
+
+	.tab__item{
+		flex: 0 0 20%;
+		margin: 0 2.5%;
+	}
+}
+
+.tab--center{
+	justify-content: center;
+}
+
+.tab__link--inactive{
+	cursor: not-allowed;
+}
+
+.tab--responsive{
+	transition: flex 0.2s @easeMitsubishi;
+	.tab__item{
+		flex: 0 0 30%;
+	}
+
+	.tab__item--active{
+		flex: 0 0 60%;
+	}
+}

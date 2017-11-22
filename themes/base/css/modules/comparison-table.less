@@ -1,0 +1,76 @@
+// ==========================================================================
+// Comparison Table
+// ==========================================================================
+
+// block
+.comparison-table{
+}
+
+// elements
+.comparison-table__wrapper{
+	border: none;
+}
+
+.comparison-table__line{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	position: relative;
+	.gradient-background;
+
+	&:after{
+		opacity: 0;
+		transition: all 0.5s ease-out;
+	}
+
+	&:hover{
+		&:after{
+			opacity: 1;
+		}
+	}
+}
+
+.comparison-table__cell{
+	width: 40%;
+	display: block;
+	flex-grow: 1;
+	color: @color-quaternary;
+
+	&:first-child{
+		font-family: @font-family-bold;
+		max-width: 15%;
+	}
+
+	&--included{
+		&:extend(.icon-tick all);
+	}
+
+	&--none{
+		&:extend(.icon-times all);
+	}
+}
+
+.comparison-table__separator{
+	opacity: 0.4;
+	border: none;
+	.gradient-border;
+}
+
+// modifiers
+.comparison-table--two-columns{
+	.comparison-table__cell{
+		&:first-child{
+			max-width: 50%;
+		}
+	}
+}
+
+.comparison-table--inactive{
+	.comparison-table__line{
+		&:hover{
+			&:after{
+				display: none;
+			}
+		}
+	}
+}

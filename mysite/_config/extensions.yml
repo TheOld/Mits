@@ -1,0 +1,39 @@
+MitsubishiMotors\DataObjects\CarouselItem:
+  extensions:
+    - SilverStripe\Versioned\Versioned
+
+MitsubishiMotors\DataObjects\VehicleFeature:
+  extensions:
+    - SilverStripe\Versioned\Versioned
+
+MitsubishiMotors\DataObjects\TileGroup:
+  extensions:
+    - SilverStripe\Versioned\Versioned
+
+MitsubishiMotors\DataObjects\Tile:
+  extensions:
+    - SilverStripe\Versioned\Versioned
+
+MitsubishiMotors\DataObjects\FeaturedSpec:
+  extensions:
+    - SilverStripe\Versioned\Versioned
+
+MitsubishiMotors\DataObjects\SafetyAnimation:
+  extensions:
+    - SilverStripe\Versioned\Versioned
+
+MitsubishiMotors\DataObjects\RelatedContent:
+  extensions:
+    - SilverStripe\Versioned\Versioned
+
+MitsubishiMotors\DataObjects\Slice:
+  extensions:
+    - SilverStripe\Versioned\Versioned
+
+SilverStripe\Assets\Image:
+  extensions:
+    - MitsubishiMotors\Extensions\ImageExtension
+
+SilverStripe\Filesystem\Storage\DBFile:
+  extensions:
+    - MitsubishiMotors\Extensions\ImageExtension

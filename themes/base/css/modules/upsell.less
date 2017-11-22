@@ -1,0 +1,39 @@
+// ==========================================================================
+// upsell slice
+// ==========================================================================
+
+// block
+.upsell{
+	height: 50rem;
+
+	@media @md {
+		height: 20rem;
+	}
+}
+
+// elements
+.upsell__content{
+	display: flex;
+	align-items: left;
+	min-height: 100%;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.upsell__media{
+	position: absolute;
+	right: 0;
+	top: 0;
+	min-height: 100%;
+	height: 100%;
+	width: 75rem;
+
+	img{
+		height: auto;
+		width: 100%;
+	}
+
+	@media @md {
+		width: 45rem;
+	}
+}

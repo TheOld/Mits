@@ -1,0 +1,73 @@
+{
+	"exclude": {
+		"patterns": [
+			".env",
+			"silverstripe-redirects/cache/",
+			"/assets/",
+			"/silverstripe-cache/",
+			".DS_Store",
+			".gitignore",
+			".mergesources.yml",
+			"beam.json",
+			"checksums.json*",
+			"package.json",
+			"README.md",
+			"sftp-config.json",
+			"Vagrantfile",
+			"/maintenance/on",
+			"/.docs/",
+			"/.idea/",
+			"/.vagrant/",
+			".well-known/",
+			"/access-logs/",
+			"/cgi-bin/",
+			"/docs/"
+		]
+	},
+	"servers": {
+		"s2": {
+			"user": "dev",
+			"host": "hdy-www-dev4.heyday.net.nz",
+			"webroot": "/home/dev/subdomains/mmnz/s2"
+		},
+		"s3": {
+			"user": "dev",
+			"host": "hdy-www-dev4.heyday.net.nz",
+			"webroot": "/home/dev/subdomains/mmnz/s3"
+		},
+		"live": {
+			"user": "",
+			"host": "",
+			"webroot": "",
+			"branch": "remotes/origin/master"
+		}
+	},
+	"commands": [
+		{
+			"command": "composer install -o --prefer-dist --no-dev",
+			"location": "local",
+			"phase": "pre",
+			"required": true
+		},
+		{
+			"command": "framework/sake dev/build",
+			"location": "target",
+			"phase": "post",
+			"tag": "build"
+		},
+		{
+			"command": "framework/sake cache-include/clearAll",
+			"location": "target",
+			"phase": "post",
+			"tag": "cache"
+		},
+		{
+			"command": "curl -s \"https://api.heyday.net.nz/v1/notify/deployment?name=$(whoami)&domain=domain.co.nz&host=\"",
+			"location": "local",
+			"phase": "post",
+			"servers": [
+				"live"
+			]
+		}
+	]
+}

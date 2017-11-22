@@ -1,0 +1,453 @@
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+// Font size
+//============================================================
+//
+.font-size(@size, @height, @unit: rem) {
+	font-size: unit(@size, px);
+	font-size: unit(@size / 10, @unit);
+	line-height: unit(@height, px);
+	line-height: unit(@height / 10, @unit);
+}
+
+// Global mixins file, all global helper mixins should go into this file
+
+// bg-hi-dpi
+//============================================================
+//
+// @param color: transparent, #ff0000, rgba(255, 0, 0, 0.5), etc
+// @param filename: logo.png, bg.jpg etc.
+// @param x: left, 50px, 0%, etc
+// @param y: top, 50px, 0%, etc
+// @param width: 120px, 50% etc
+// @param height: 120px, 50% etc
+//
+// @example: .bg-hi-dpi( transparent, 'logo.png', 0%, 0%, no-repeat, 100px, 50px);
+
+.bg-hi-dpi( @color: 'transparent', @filename, @x, @y, @repeat: 'no-repeat', @width, @height ) {
+	background: @color url("@{filename}") @x @y @repeat;
+	@media @hi-dpi {
+		@src: ~`@{filename}.split( /(.gif|.png|.jpg|.jpeg)/, 2 ).join( '@2x' )`;
+		background: @color url("@{src}") @x @y @repeat;
+		background-size: @width @height;
+	}
+}
+
+
+// text-shadow-fix
+//============================================================
+
+.text-shadow-fix() {
+	text-shadow: rgba(0,0,0,0.1) 1px 1px;
+}
+
+
+// clear-filter
+//============================================================
+
+.clear-filter() {
+	filter: none;
+	--ms-filter: none;
+}
+
+
+// opacity
+//============================================================
+// @see http://www.w3.org/TR/css3-color/#transparency
+//
+// @param opacity: 0.5, 1, etc
+//
+// @example: .opacity(0.5);
+
+.opacity( @opacity: 0.5 ) {
+	opacity: @opacity;
+	@opacity-ie: @opacity * 100;
+	filter: ~'alpha(opacity=@{opacity-ie})';
+}
+
+
+// box-sizing
+//============================================================
+// @see http://dev.w3.org/csswg/css3-ui/#box-sizing
+
+// Box sizing
+.box-sizing( @boxmodel ) {
+	-webkit-box-sizing: @boxmodel;
+	--moz-box-sizing: @boxmodel;
+	box-sizing: @boxmodel;
+	// *behavior: url( "@{css-assets-dir}boxsizing.htc" );
+}
+
+
+// border-radius
+//============================================================
+// @see http://www.w3.org/TR/css3-background/#border-radius
+//
+// @param top-left-radius     :  px, em, %
+// @param top-right-radius    :  px, em, %
+// @param bottom-right-radius :  px, em, %
+// @param bottom-left-radius  :  px, em, %
+//
+// @example: .border-radius(10px);
+// @example: .border-radius(10px, 10px, 0px, 0px);
+
+.border-radius(...) {
+	-webkit-border-radius: @arguments;
+	--moz-border-radius: @arguments;
+	border-radius: @arguments;
+
+	--webkit-background-clip: padding-box;
+	--moz-background-clip: padding;
+	background-clip: padding-box;
+}
+
+
+// box-shadow
+//============================================================
+// @see http://www.w3.org/TR/css3-background/#box-shadow
+//
+// @param colour              :  #000, rgba, hsla
+// @param horizontal-offset   :  px, em
+// @param vertical-offset     :  px, em
+// @param blur-radius         :  px, em
+// @param spread-distance     :  px, em
+// @param inset               :  inset
+//
+// @example: .box-shadow(#000, 1px, 2px, 50px, 20px, inset, ~',', #fff, 1px, 2px, 50px, 5px);
+
+.box-shadow(...) {
+	-webkit-box-shadow: @arguments;
+	--moz-box-shadow: @arguments;
+	box-shadow: @arguments;
+}
+
+
+// linear-gradient
+//============================================================
+// @see http://dev.w3.org/csswg/css3-images/#linear-gradients
+//
+// @param dir                 :  top, left, 90deg
+// @param start-color         :  #000, rgba(255,255,255,0.5)
+// @param end-color           :  #000, rgba(255,255,255,0.5)
+//
+// NOTE: The direction for the IE gradient is automagically
+// worked out for you based either on the direction or the
+// angle that you pass in. Obviously it will only be a
+// horizontal or vertical gradient, but it's still awesome.
+//
+// ALSO: Support for rgba is covered in IE too. Values are
+// converted to aRGB.
+//
+// @example .linear-gradient(50deg,  #eee, #aaa); (IE auto included)
+//
+// @example .linear-gradient-multi(~'top, #eee 0%, #aaa 50%, #eee 100%');
+//          .linear-gradient-ie(top, #eee, #aaa);
+
+.linear-gradient( @dir: top, @start-color: #eee, @end-color: #aaa ) {
+	background: -webkit-linear-gradient(@dir, @start-color 0%, @end-color 100%);
+	background: -moz-linear-gradient(@dir, @start-color 0%, @end-color 100%);
+	background: -ms-linear-gradient(@dir, @start-color 0%, @end-color 100%);
+	background: -o-linear-gradient(@dir, @start-color 0%, @end-color 100%);
+	background: linear-gradient(@dir, @start-color 0%, @end-color 100%);
+	.linear-gradient-ie( @dir, @start-color, @end-color);
+}
+
+.linear-gradient-multi( ... ) {
+	background-image: -webkit-linear-gradient(@arguments);
+	background-image: -moz-linear-gradient(@arguments);
+	background-image: -ms-linear-gradient(@arguments);
+	background-image: -o-linear-gradient(@arguments);
+	background-image: linear-gradient(@arguments);
+}
+
+.linear-gradient-ie( @dir, @start-color, @end-color) when (@dir = top),
+	not ( isstring(@dir) ) and ( @dir >= 225 ) and ( @dir < 315 ),
+	not ( isstring(@dir) ) and ( @dir >= -135 ) and ( @dir < -45 ) {
+	.linear-gradient-ie-filter(@start-color, @end-color, 0);
+}
+.linear-gradient-ie( @dir, @start-color, @end-color) when (@dir = right),
+	not ( isstring(@dir) ) and ( @dir >= 135 ) and ( @dir < 225 ),
+	not ( isstring(@dir) ) and ( @dir >= -225 ) and ( @dir < -135 ) {
+	.linear-gradient-ie-filter(@end-color, @start-color, 1);
+}
+.linear-gradient-ie( @dir, @start-color, @end-color) when (@dir = bottom),
+	not ( isstring(@dir) ) and ( @dir >= 45 ) and ( @dir < 135 ),
+	not ( isstring(@dir) ) and ( @dir >= -315 ) and ( @dir < -225 ) {
+	.linear-gradient-ie-filter(@end-color, @start-color, 0);
+}
+.linear-gradient-ie( @dir, @start-color, @end-color) when (@dir = left),
+	not ( isstring(@dir) ) and ( @dir >= 315 ) and ( @dir < 360 ),
+	not ( isstring(@dir) ) and ( @dir >= -45 ) and ( @dir < 45 ),
+	not ( isstring(@dir) ) and ( @dir < -315 ) and ( @dir >= -360 ) {
+	.linear-gradient-ie-filter(@start-color, @end-color, 1);
+}
+
+.linear-gradient-ie-filter( @start: #eee, @end: #aaa, @type: 1 ) {
+	@c-start: argb( @start );
+	@c-end:   argb( @end );
+	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{c-start}', endColorstr='@{c-end}', GradientType=@{type})";
+	--ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr='@{c-start}',endColorstr='@{c-end}',GradientType=@{type})";
+}
+
+
+// radial-gradient
+//============================================================
+// @see http://dev.w3.org/csswg/css3-images/#radial-gradients
+//
+// @param position            :  left top, 50% 50%
+// @param shape               :  circle, ellipse, 100% 75%
+// @param colorA              :  #000 0%, red 0%
+// @param colorB              :  #000 50%, red 50%
+// @param colorC              :  #000 100%, red 100%
+//
+// @example .radial-gradient(~'50% 50%,', circle, ~',crimson 0%', ~',black 100%');
+
+.radial-gradient(...) {
+	background-image: -webkit-radial-gradient(@arguments);
+	background-image: -moz-radial-gradient(@arguments);
+	background-image: -ms-radial-gradient(@arguments);
+	background-image: -o-radial-gradient(@arguments);
+	background-image: radial-gradient(@arguments);
+}
+
+
+// transform
+//============================================================
+// @see http://www.w3.org/TR/css3-2d-transforms/
+//
+// @param functions           :  matrix()
+//                            :  translate()
+//                            :  scale()
+//                            :  rotate()
+//                            :  skew()
+//
+// @example : .transform( rotate( 30deg ) );
+
+.transform(...) {
+	-webkit-transform: @arguments;
+	--moz-transform: @arguments;
+	--ms-transform: @arguments;
+	--o-transform: @arguments;
+	transform: @arguments;
+}
+
+
+// transform-origin
+//============================================================
+// @see http://www.w3.org/TR/css3-3d-transforms/#transform-origin-property
+//
+// @param value               :  left   |
+//                               center |
+//                               right  |
+//                               px     |
+//                               em     |
+//                               %;
+//
+// @example : .transform-origin( 20%, 50% );
+
+.transform-origin(...) {
+	-webkit-transform-origin: @arguments;
+	--moz-transform-origin: @arguments;
+	--ms-transform-origin: @arguments;
+	--o-transform-origin: @arguments;
+	transform-origin: @arguments;
+}
+
+
+// transform-style
+//============================================================
+// @see http://www.w3.org/TR/css3-3d-transforms/#transform-style-property
+//
+// @param value               :  preserve-3d | flat
+//
+// @example : .transform-style( preserve-3d );
+
+.transform-style(...) {
+	-webkit-transform-style: @arguments;
+	--moz-transform-style: @arguments;
+	--ms-transform-style: @arguments;
+	--o-transform-style: @arguments;
+	transform-style: @arguments;
+}
+
+
+// translate
+//============================================================
+// @see http://www.w3.org/TR/css3-3d-transforms/#transform-functions
+//
+// @param translate-x         :  px
+// @param translate-y         :  px
+//
+// @example : .translate( 20px, 40px );
+
+.translate(...) {
+	-webkit-transform: translate(@arguments);
+	--moz-transform: translate(@arguments);
+	--ms-transform: translate(@arguments);
+	--o-transform: translate(@arguments);
+	transform: translate(@arguments);
+}
+
+
+// scale
+//============================================================
+// @see http://www.w3.org/TR/css3-3d-transforms/#transform-functions
+//
+// @param scale-x             :  0.5, 2, etc
+// @param scale-y             :  0.5, 2, etc
+//
+// @example : .scale( 1.5 );
+// @example : .scale( 1.5, 0.5 );
+
+.scale(...) {
+	-webkit-transform: scale(@arguments);
+	--moz-transform: scale(@arguments);
+	--ms-transform: scale(@arguments);
+	--o-transform: scale(@arguments);
+	transform: scale(@arguments);
+}
+
+
+// rotate
+//============================================================
+// @see http://www.w3.org/TR/css3-3d-transforms/#transform-functions
+//
+// @param angle               :  0deg
+//
+// @example : .rotate( 5deg );
+
+.rotate(...) {
+	-webkit-transform: rotate(@arguments);
+	--moz-transform: rotate(@arguments);
+	--ms-transform: rotate(@arguments);
+	--o-transform: rotate(@arguments);
+	transform: rotate(@arguments);
+}
+
+
+// skew
+//============================================================
+// @see http://www.w3.org/TR/css3-3d-transforms/#transform-functions
+//
+// @param axis-x              :  0deg
+// @param axis-y              :  0deg
+//
+// @example : .skew( 15deg );
+// @example : .skew( 15deg, 5deg );
+
+.skew(...) {
+	-webkit-transform: skew(@arguments);
+	--moz-transform: skew(@arguments);
+	--ms-transform: skew(@arguments);
+	--o-transform: skew(@arguments);
+	transform: skew(@arguments);
+}
+
+
+// transition
+//============================================================
+// @see http://www.w3.org/TR/css3-transitions/
+//
+// @param properties          :  all, left, opacity, etc
+// @param duration            :  1s, 1000ms
+// @param delay               :  1s, 1000ms
+// @param easing              :  linear, ease-in-out, etc
+//
+// @example : .transition( all, 0.5s, ease-out );
+// @example : .transition( width, 0.5s, 1s, ease-in-out );
+
+.transition(...) {
+	-webkit-transition: @arguments;
+	--moz-transition: @arguments;
+	--ms-transition: @arguments;
+	--o-transition: @arguments;
+	transition: @arguments;
+}
+
+
+
+// react transition
+//============================================================
+.react-transition(@name; @duration; @delay; @easing; @inactive; @active) {
+	.@{name}-enter {
+		@inactive();
+		.transition(all @duration @delay @easing);
+	}
+	.@{name}-enter.@{name}-enter-active {
+		@active();
+	}
+	.@{name}-leave {
+		@active();
+		.transition(all @duration @delay @easing);
+	}
+	.@{name}-leave.@{name}-leave-active {
+		@inactive();
+	}
+
+	.@{name}-appear {
+		@inactive();
+		.transition(all @duration @delay @easing);
+	}
+
+	.@{name}-appear.@{name}-appear-active {
+		@active();
+	}
+}
+
+// css transform filters
+//============================================================
+.filter(@args) {
+	-webkit-filter: @args;
+	filter: @args;
+}
+
+// positioning
+//============================================================
+.vertical-align(@args: relative) {
+	position: @args;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.horizontal-align(@args: relative) {
+	position: @args;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+// IE/Edge mixin
+//============================================================
+.isMicrosoft(@block) {
+	// we use svg smil animation to target both IE and Edge
+	// (not supported at all)
+	.no-smil & {
+		@block();
+	}
+}
+
+// Customize placeholder
+//============================================================
+.placeholder(@rules) {
+	&::-webkit-input-placeholder {
+		@rules();
+	}
+	&:-moz-placeholder {
+		@rules();
+	}
+	&::-moz-placeholder {
+		@rules();
+	}
+	&:-ms-input-placeholder {
+		@rules();
+	}
+}
+
+// full size div
+//============================================================
+.full-size(@position: absolute) {
+	position: @position;
+	width: 100%;
+	height: 100%;
+}

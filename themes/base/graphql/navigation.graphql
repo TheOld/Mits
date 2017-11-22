@@ -1,0 +1,17 @@
+query Navigation {
+	getMenus {
+		Name
+		Items {
+			ID
+			MenuTitle
+			Link
+			Sort
+			Children {
+				ID
+				MenuTitle
+				Link
+				Sort
+			}
+		}
+	}
+}

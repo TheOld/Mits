@@ -1,0 +1,16 @@
+SilverStripe\GraphQL\Controller:
+  schema:
+    types:
+      menuset: 'MitsubishiMotors\GraphQL\Types\MenuSetTypeCreator'
+      menuitem: 'MitsubishiMotors\GraphQL\Types\MenuItemTypeCreator'
+      pages: 'MitsubishiMotors\GraphQL\Types\PageTypeCreator'
+      dealers: 'MitsubishiMotors\GraphQL\Types\DealerTypeCreator'
+    queries:
+      getMenus: 'MitsubishiMotors\GraphQL\Queries\MenuSetQueryCreator'
+      getDealers: 'MitsubishiMotors\GraphQL\Queries\DealersQueryCreator'
+    scaffolding:
+      types:
+        MitsubishiMotors\DataObjects\Slice:
+          fields: [ID, Title, Copy, ParentID]
+          operations:
+            read: true

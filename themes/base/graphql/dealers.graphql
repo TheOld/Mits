@@ -1,0 +1,15 @@
+query Dealers {
+	getDealers {
+		id
+		name
+		addressLine1
+		addressLine2
+		addressLine3
+		phone
+		website
+		location
+		locationX
+		locationY
+		services
+	}
+}

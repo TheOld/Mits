@@ -1,0 +1,117 @@
+// ==========================================================================
+// Heyday Styles
+// ==========================================================================
+
+// STYLE
+// To make sure our team writes consistent, idiomatic CSS/Less please refer to
+// https://github.com/necolas/idiomatic-css for formatting and style details.
+// Some key points
+// - Use real tabs (configure your editor to "show invisibles").
+// - All code should look like a single person typed it.
+//
+//
+// Modules
+// Key points of the CSS module system
+// - All css should be defined in a css module.
+// - All css modules should use the BEM naming convention.
+// - All css modules should have a comment detailing their usage and provide
+//     an example of the basic HTML structure expected.
+
+// Environment setup
+// ==========================================================================
+@import "~normalize-css/normalize.css"; // Reset styles
+
+// Variable & mixins
+// ==========================================================================
+@import "variables.less";
+@import "core/easing.less";
+@import "core/mixins.less";
+@import "~@heyday/less-grid/src/less/grid.less"; // Heyday's home-grown grid 🥝
+@import "core/helpers.less";
+
+// Core
+// ==========================================================================
+@import "core/layout.less"; // Grid and base layout styles (l)
+@import "core/fonts.less"; // Fonts
+@import "core/typography.less"; // Type styles (type)
+@import "core/icons.less"; // Type styles (type)
+@import "core/helpers.less"; // Helper classes for adaptive grid
+@import "core/debug-grid.less"; // Helpers to aligns elements up
+
+// Settings
+// ==========================================================================
+@import "settings/whitespace.less"; // Manage margin and padding
+@import "settings/fonts.less"; // Manage fonts size
+
+// Modules
+// ==========================================================================
+@import "modules/nprogress.less"; // Nano progress styles
+@import "modules/button.less"; // Button styles
+@import "modules/header.less"; // Header styles
+@import "modules/navigation.less"; // Navigation styles
+@import "modules/table.less"; // Table styles
+@import "modules/form.less"; // Form styles
+@import "modules/mobile-dropdown.less"; // Custom mobile dropdown component
+@import "modules/copyright.less"; // Copyright styles
+@import "modules/footer.less"; // Footer styles
+@import "modules/colour-swapper.less"; // Colour swapper styles
+@import "modules/tab.less"; // Tab styles
+@import "modules/tile.less"; // Generic tile styles
+@import "modules/price.less"; // Price styles
+@import "modules/background-title.less"; // Background title styles
+@import "modules/vehicle-feature-keypoint.less"; // Vehicle Feature slice styles
+@import "modules/vehicle-feature-image.less"; // Vehicle Feature image component styles
+@import "modules/vehicle-feature-description.less"; // Vehicle Feature description component styles
+@import "modules/vehicle-slideshow.less"; // Vehicle Slideshow slice styles
+@import "modules/filter.less"; // Filter component
+@import "modules/accordion.less"; // Accordion component
+@import "modules/dealer-detail-tile.less"; // Dealer detail tile component
+@import "modules/tabbed-tile.less"; // Tabbed tile component
+@import "modules/skewed-tile.less"; // Skewed tile
+@import "modules/comparison-table.less"; // Comparison table component
+@import "modules/special-offer.less"; // Special offer component
+@import "modules/vehicle-list.less"; // Vehicle list component
+@import "modules/breadcrumb.less"; // Breadcrumb component
+@import "modules/links.less"; // Links component
+@import "modules/threesixty.less"; // Threesixty component
+@import "modules/loader.less"; // Loader component
+@import "modules/spinner.less"; // Spinner component
+@import "modules/page.less"; // Page component
+@import "modules/sticky-navigation.less"; // Sticky navigation component
+@import "modules/unique-selling-point.less"; // Unique selling point list component
+@import "modules/vehicle-overlap.less"; // Generic style for slices with overlapping image
+@import "modules/vehicle-platform.less"; // Style for side vehcile that stand on a "platform"
+@import "modules/list.less"; // Generic style for lists
+@import "modules/separator.less"; // Generic separator component
+@import "modules/subnavigation.less"; // Subnavigation style
+@import "modules/megamenu.less"; // Megamenu style
+@import "modules/editorial.less"; // Generic editorial style
+@import "modules/document.less"; // Document tile style
+@import "modules/mobile-header.less"; // Mobile header style
+@import "modules/dealer-search.less"; // Dealer search component style
+@import "modules/search.less"; // Search page components style
+@import "modules/modal.less"; // Modal components style
+@import "modules/video.less"; // Video player style
+@import "modules/bullets.less"; // Bullet navigation style
+@import "modules/controls.less"; // Controls style (generic prev/next...)
+@import "modules/upsell.less"; // Upsell slice
+@import "modules/bar.less"; // Fixed bar displaying total price
+
+// Trumps
+// ==========================================================================
+@import "trumps/gradient-border.less"; // Gradient border style
+@import "trumps/gradient-background.less"; // Gradient background style
+@import "trumps/block-drop-shadow.less"; // Block drop shadow style
+@import "trumps/background-noise.less"; // Background noise style
+@import "trumps/background-halo.less"; // Background halo style
+@import "trumps/skewed-hover.less"; // Skewed hover effect (takes place in main navigation and tab)
+@import "trumps/background-image-content.less"; // Style for component with background image and content on top
+@import "trumps/form-symbols.less"; // Style for form symbol (required, valid...)
+@import "trumps/blur.less"; // Style for blurry element
+@import "trumps/skewed-tile-whitespace.less"; // Manage whitespace for content underneat skewed tile
+@import "trumps/transitions.less"; // Centralized defined vue transitions
+@import "trumps/image-placeholder.less"; // Image placeholder
+
+// Section
+// ==========================================================================
+@import "sections/builder.less"; // Style specific for builder section

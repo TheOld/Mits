@@ -1,0 +1,49 @@
+// ==========================================================================
+// Filter
+// ==========================================================================
+
+// block
+.filter{
+	display: flex;
+	text-transform: uppercase;
+	font-family: @font-family-bold;
+}
+
+// elements
+.filter__item{
+	.font-size(40, 60);
+	cursor: pointer;
+	border-radius: 0.2rem;
+	margin-right: 1rem;
+	color: @color-brand;
+	display: inline-flex;
+	transition: all 0.25s @easeMitsubishi;
+
+	&:last-child{
+		margin-right: 0;
+	}
+
+	@media @md {
+		.font-size(14, 20);
+	}
+}
+
+// modifier
+.filter--center{
+	justify-content: center;
+}
+
+.filter--liquid{
+	justify-content: space-between;
+}
+
+.filter__item--active{
+	background: @color-brand;
+	color: @color-secondary;
+	box-shadow: inset 0 0 3px fade(@color-primary, 30%);
+}
+
+.filter__item--label{
+	color: fade(@color-quaternary, 50%);
+	cursor: auto;
+}

@@ -1,0 +1,50 @@
+// ==========================================================================
+// Controls (left and right arrow and other generic controls)
+// ==========================================================================
+
+// block
+.controls{
+}
+
+// elements
+.controls__nav{
+	.vertical-align;
+	position: absolute;
+	width: 10rem;
+	height: 10rem;
+	z-index: 1;
+	opacity: 0.5;
+	transition: opacity 0.4s ease;
+	cursor: pointer;
+
+	img{
+		width: 100%;
+		height: auto;
+	}
+
+	&:hover{
+		opacity: 1;
+	}
+
+	@media @md {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+}
+
+// modifiers
+.controls__nav--next{
+	right: 4rem;
+
+	@media @md {
+		right: 2rem;
+	}
+}
+
+.controls__nav--prev{
+	left: 4rem;
+
+	@media @md {
+		right: 2rem;
+	}
+}

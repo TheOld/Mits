@@ -1,0 +1,55 @@
+@import '../variables.less';
+
+// Colors
+//
+// Brand colors
+//
+// Markup: colors.html
+//
+// Style guide: Docs.colors
+
+.color(@color) {
+	position: relative;
+	float: left;
+	width: 15rem;
+	height: 15rem;
+	margin: 0 2rem 2rem 0;
+	background-color: @color;
+
+	p {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 50%;
+		transform: translateY(-50%);
+		color: #fff;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+		text-align: center;
+	}
+}
+
+.colors {
+	overflow: hidden;
+}
+
+.color {
+	.color(@color-primary);
+}
+
+.color--secondary {
+	.color(@color-secondary);
+}
+
+.color--tertiary {
+	.color(@color-tertiary);
+}
+
+// ============================================================
+
+// Fonts
+//
+// Brand fonts
+//
+// Markup: <h3 style="font-family: Helvetica, Arial, sans-serif;">Primary: Helvetica <small><em>@font-primary</em></small></h3>
+//
+// Style guide: Docs.fonts

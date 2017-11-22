@@ -1,0 +1,112 @@
+MitsubishiMotors\DataObjects\Slice:
+  types:
+    Accordion:
+      name: Accordions slice
+      fields:
+        Title:
+          label: Title
+          type: Textarea
+        Subtitle:
+          label: Subtitle
+          type: Text
+      has_many:
+        Accordions: Accordion
+    FAQ:
+      name: FAQs slice
+      fields:
+        Title:
+          label: Title
+          type: Textarea
+        Subtitle:
+          label: Subtitle
+          type: Text
+      many_many:
+        FAQs: FAQs
+    Image:
+      name: Editorial slice
+      fields:
+        Title:
+          label: Title
+          type: Text
+        Copy:
+          label: Copy
+          type: Textarea
+        Subtitle:
+          label: Side label
+          type: Text
+          help: Appears vertically on the left of the primary image
+        ShowImageRight:
+          label: Tick me to show the primary image on the right
+          type: Checkbox
+      has_one:
+        Image:
+          label: Primary (larger) image
+          type: Upload
+          help: Should measure 850 pixels wide by 560 pixels high
+        Image2:
+          label: Secondary (smaller) Image
+          type: Upload
+          help: Should measure 450 pixels wide by 700 pixels high (portrait style)
+    Carousel:
+      name: Carousel slice
+      fields:
+        Title:
+          label: Title
+          type: Text
+          help: This title is for referrence only, it is not displayed on the frontend.
+      has_many:
+        CarouselItems: Carousel Items
+    TwoColumn:
+      name: Two-column slice (text only)
+      fields:
+        Title: Title
+        Copy:
+          label: Content
+          type: HTMLEditor\HTMLEditor
+    TwoColumnWithImage:
+      name: Two-column slice (text and image)
+      fields:
+        Copy:
+          label: Content
+          type: HTMLEditor\HTMLEditor
+        ShowImageRight:
+          label: Tick me to show the image on the right
+          type: Checkbox
+      has_one:
+        Image:
+          label: Image
+          type: Upload
+          help: Should measure 515 pixels wide by 350 pixels high
+    OneColumn:
+      name: One-column slice
+      fields:
+        Title: Title
+        Subtitle:
+          label: Subtitle
+          type: Text
+        Blurb: Blurb
+        Copy:
+          label: Content
+          type: HTMLEditor\HTMLEditor
+    Document:
+      name: Document slice
+      has_many:
+        Documents: Document
+    RelatedContent:
+      name: Related pages slice
+      fields:
+        Title: Title
+        Subtitle:
+          label: Subtitle
+          type: Text
+      has_many:
+        RelatedContent: Related Pages
+    TabbedContent:
+      name: Tabbed content slice
+      fields:
+        Title: Title
+        Subtitle:
+          label: Subtitle
+          type: Text
+      has_many:
+        TileGroups: Tile Groups

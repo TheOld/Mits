@@ -1,0 +1,55 @@
+// ==========================================================================
+// Copyright
+// ==========================================================================
+
+// block
+.copyright{
+	.clearfix;
+	justify-content: center;
+
+	@media @md {
+		display: flex;
+	}
+}
+
+// elements
+.copyright__logo{
+	display: block;
+	height: 8rem;
+	margin: 10rem 0 0 0;
+
+	img{
+		height: 100%;
+		width: auto;
+		vertical-align: middle;
+	}
+
+	@media @md {
+		display: inline-flex;
+		height: 1.5rem;
+		margin: 0 1rem 0 0;
+	}
+}
+
+.copyright__text{
+	display: block;
+	margin-left: 1rem;
+	color: fade(@color-secondary, 30%);
+	position: relative;
+	white-space: nowrap;
+	.font-size(45, 120);
+
+	@media @md {
+		display: inline-flex;
+		.font-size(12, 30);
+		&:after{
+			content: '';
+			background: fade(@color-secondary, 30%);
+			height: 100%;
+			width: 1px;
+			position: absolute;
+			left: -1rem;
+			top: 0;
+		}
+	}
+}

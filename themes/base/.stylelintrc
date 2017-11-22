@@ -1,0 +1,28 @@
+{
+	"rules": {
+		"block-no-empty": true,
+		"block-opening-brace-space-before": "always",
+		"block-opening-brace-newline-after": "always",
+		"block-closing-brace-newline-before": "always",
+		"declaration-no-important": true,
+		"declaration-block-no-duplicate-properties": true,
+		"declaration-colon-space-after": "always",
+		"color-no-invalid-hex": true,
+		"indentation": "tab",
+		"selector-no-id": true,
+		"selector-descendant-combinator-no-non-space": true,
+		"selector-type-case": "lower",
+		"selector-list-comma-space-after": "never-single-line",
+		"selector-class-pattern": "^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-z0-9]+(?:[a-z0-9]+)*(?:__[a-z0-9]+(?:-[a-z0-9]+)*)?(?:--[a-z0-9]+(?:-[a-z0-9]+)*)?(?:\\[.+\\])?$",
+		"max-nesting-depth": 3,
+		"at-rule-name-case": "lower",
+		"rule-empty-line-before": [
+			"always-multi-line",
+			{
+				"except": [
+					"first-nested"
+				]
+			}
+		]
+	}
+}

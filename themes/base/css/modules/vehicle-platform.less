@@ -1,0 +1,42 @@
+// ==========================================================================
+// Vehicle platform style
+// ==========================================================================
+
+// block
+.vehicle-platform{
+	.full-size(absolute);
+	left: 50%;
+	opacity: 0;
+	transform: translateY(4rem) translateX(-50%);
+	transition: all 0.5s @easeMitsubishi;
+}
+
+.vehicle-platform__image{
+	position: absolute;
+	bottom: 0;
+	bottom: 10%;
+	left: 0;
+
+	path{
+		transition: all 0.2s @easeMitsubishi;
+		transition-delay: 0.5s;
+	}
+
+	@media @md {
+		bottom: 3%;
+	}
+
+	@media @lg {
+		bottom: 3%;
+	}
+
+	@media @xl {
+		bottom: 8%;
+	}
+}
+
+// modifier
+.vehicle-platform--visible{
+	opacity: 1;
+	transform: translateY(2rem) translateX(-50%);
+}

@@ -1,0 +1,38 @@
+// ==========================================================================
+// Dealer detail tile
+// ==========================================================================
+
+// block
+.dealer-detail-tile{
+	background: @color-secondary;
+	border: 1px solid fade(@color-quinary, 70%);
+	min-height: 33rem;
+	.block-drop-shadow;
+}
+
+// elements
+.dealer-detail-tile__label{
+	font-size: 3.8rem;
+	display: block;
+	color: @color-quaternary;
+	font-family: @font-family-bold;
+
+	@media @md {
+		font-size: 1.3rem;
+	}
+}
+
+.dealer-detail-tile__text{
+	font-size: 3.8rem;
+	display: block;
+	color: @color-tertiary;
+	font-family: @font-family-light;
+
+	@media @md {
+		font-size: 1.3rem;
+	}
+}
+
+.dealer-detail-tile__links{
+	display: flex;
+}

@@ -1,0 +1,350 @@
+.clearfix {
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
+.inline {
+	display: inline;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.block {
+	display: block;
+}
+
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.float--right{
+	float: right !important;
+}
+
+// Hide only visually, but have it available for screenreaders: h5bp.com/v
+.visuallyhidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+// Extends the .visuallyhidden class to allow the element to be focusable
+// when navigated to via the keyboard: h5bp.com/p
+.visuallyhidden {
+	&.focusable {
+		&:active,
+		&:focus {
+			clip: auto;
+			height: auto;
+			margin: 0;
+			overflow: visible;
+			position: static;
+			width: auto;
+		}
+	}
+}
+
+// Hide visually and from screenreaders, but maintain layout
+.invisible {
+	visibility: hidden;
+}
+
+// Center aligned
+// ==========================================================================
+.type--center {
+	text-align: center;
+}
+
+// Right aligned
+// ==========================================================================
+.type--right {
+	text-align: right;
+}
+
+// Left aligned
+// ==========================================================================
+.type--left {
+	text-align: left;
+}
+
+// Uppercase
+// ==========================================================================
+.type--uppercase {
+	text-transform: uppercase;
+}
+
+// Vertical align
+// ==========================================================================
+.align--vertical {
+	@media @md {
+		display: flex;
+		align-items: center;
+	}
+}
+
+// Flex helpers
+// ==========================================================================
+.flex{
+	display: flex;
+}
+
+.flex--left{
+	align-items: left;
+}
+
+.flex--column{
+	flex-direction: column;
+}
+
+.flex--hcenter{
+	justify-content: center;
+}
+
+.flex--hbetween {
+	justify-content: space-between;
+}
+
+.flex--haround {
+	justify-content: space-around;
+}
+
+.flex--vcenter{
+	align-items: center;
+}
+
+.flex--vbottom{
+	justify-content: flex-end;
+}
+
+.flex--wrap{
+	flex-wrap: wrap;
+}
+
+
+
+// Horizontal align
+// ==========================================================================
+.align--horizontal {
+	display: flex;
+	justify-content: center;
+}
+
+// Full width image
+// ==========================================================================
+.image--fullwidth {
+	width: 100%;
+	max-width: 100%;
+}
+
+// Responsive image
+// ==========================================================================
+.image--responsive {
+	height: 0;
+}
+
+
+// Responsive block helpers
+// ==========================================================================
+.full-width {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+// Font bold
+// ==========================================================================
+.font--bold {
+	font-family: @font-family-bold !important;
+}
+
+// Font bold
+// ==========================================================================
+.font--light {
+	font-family: @font-family-light !important;
+}
+
+// Font black
+// ==========================================================================
+.font--black {
+	font-family: @font-family-black !important;
+}
+
+// Light color
+// ==========================================================================
+.color--light {
+	color: @color-secondary !important;
+}
+
+// Mid-light color
+// ==========================================================================
+.color--mid-light {
+	color: @color-quinary !important;
+}
+
+// Generic theme switcher
+// ==========================================================================
+.theme--dark{
+	transition: color fill 0.4s @easeMitsubishi;
+	color: @color-primary !important;
+
+	svg, path{
+		fill: @color-primary !important;
+	}
+
+	* {
+		color: @color-primary !important;
+	}
+
+	.button span, .button a, .button p{
+		color: @color-secondary !important;
+	}
+}
+
+.theme--light{
+	transition: color fill 0.4s @easeMitsubishi;
+	color: @color-secondary !important;
+
+	svg, path{
+		fill: @color-secondary !important;
+	}
+
+	* {
+		color: @color-secondary !important;
+	}
+}
+
+// Medium color
+// ==========================================================================
+.color--mid {
+	color: @color-quaternary !important;
+}
+
+// Dark color
+// ==========================================================================
+.color--dark {
+	color: @color-primary !important;
+}
+
+// Brand color
+// ==========================================================================
+.color--brand {
+	color: @color-brand !important;
+}
+
+// Wysiwyg joy
+// ==========================================================================
+.wysiwyg {
+	p, span, ul, ol, li, strong, b{
+		color: inherit;
+	}
+}
+
+
+// Background management (usefull with content loaded with SS)
+// ==========================================================================
+.background--cover {
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+// Background management
+// ==========================================================================
+.background--contain {
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+// Animated (will hide the element on page load to avoid floc)
+// ==========================================================================
+.js .animated, .js .js-animated {
+	opacity: 0;
+}
+
+// Spacer (usefull for page layout)
+// will force an empty div to have a width
+// ==========================================================================
+.spacer{
+	border: 1px solid transparent;
+	&:after{
+		content: "\200B";
+	}
+}
+
+// Background color
+// ==========================================================================
+.background-color {
+	&.background-color--light{
+		background-color: @color-secondary;
+	}
+	&.background-color--grey{
+		background-color: @color-septenary;
+	}
+	&.background-color--dark{
+		background-color: @color-senary;
+	}
+}
+
+// Responsive specific helper
+// ==========================================================================
+.not-mobile{
+	@media @not-lg {
+		display: none !important;
+	}
+}
+
+.only-mobile{
+	content: '';
+	display: block;
+
+	@media @md {
+		display: none !important;
+	}
+}
+
+.center-mobile{
+	@media @not-lg {
+		text-align: center !important;
+		margin: 0 auto;
+		width: 100%;
+	}
+}
+
+.block-mobile{
+	@media @not-lg {
+		display: block !important;
+	}
+}
+
+.bottom-mobile{
+	@media @not-lg {
+		position: absolute;
+		bottom: 2rem;
+		width: 100%;
+		width: 100%;
+	}
+}
+
+.reverse-mobile{
+	@media @not-lg {
+		display: flex !important;
+		flex-direction: column-reverse;
+	}
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Heyday style guide template">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>Style guide</title>
+	<link rel="stylesheet" href="kss-assets/kss.css">
+	<link rel="stylesheet" href="../../themes/base/build/bundle-style.css">
+
+</head>
+<body class="kss" id="kss-node">
+	<aside class="kss__sidebar">
+		<nav class="kss__nav">
+			<a href="index.html" class="logo">
+				Style guide
+			</a>
+			<ul class="kss__navmenu">
+					<li class="kss__navmenuitem">
+						<a class="" href="section-components.html">Components </a>
+					</li>
+					<li class="kss__navmenuitem">
+						<a class="" href="section-docs.html">Docs </a>
+					</li>
+					<li class="kss__navmenuitem">
+						<a class="" href="section-global.html">global </a>
+					</li>
+					<li class="kss__navmenuitem">
+						<a class=" current" href="section-global.html">Global </a>
+					</li>
+			</ul>
+		</nav>
+	</aside>
+	<main class="kss__main global" role="main">
+		<article class="kss__content">
+						<h1 class="kss__guideintro"></h1>
+						<section class="kss__section">
+							<div class="kss__guide">
+								<h2 class="kss__guidetitle">6.1 Form</h2>
+								<div class="kss__guidecontent">
+
+										<p class="kss__guidecodeheading"><span>Example</span></p>
+										<pre class="kss__guidecode">
+<code class="prettyprint prettyprinted lang-html">&lt;form&gt;
+	&lt;fieldset&gt;
+&lt;div class&#x3D;&quot;field text&quot;&gt;
+	&lt;label class&#x3D;&quot;left&quot; for&#x3D;&quot;CustomMemberLoginForm_LoginForm_Email&quot;&gt;Email&lt;/label&gt;
+	&lt;div class&#x3D;&quot;middleColumn&quot;&gt;
+		&lt;input type&#x3D;&quot;text&quot; name&#x3D;&quot;Email&quot; class&#x3D;&quot;text&quot; id&#x3D;&quot;CustomMemberLoginForm_LoginForm_Email&quot;&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;field optionset&quot;&gt;
+	&lt;label class&#x3D;&quot;left&quot;&gt;Are you an admin?&lt;/label&gt;
+	&lt;div class&#x3D;&quot;middleColumn&quot;&gt;
+		&lt;ul class&#x3D;&quot;optionset&quot;&gt;
+			&lt;li class&#x3D;&quot;odd valyes&quot;&gt;
+				&lt;input id&#x3D;&quot;yes&quot; class&#x3D;&quot;radio&quot; name&#x3D;&quot;&quot; type&#x3D;&quot;radio&quot; value&#x3D;&quot;yes&quot; checked&#x3D;&quot;&quot;&gt;
+				&lt;label for&#x3D;&quot;yes&quot;&gt;Yes&lt;/label&gt;
+			&lt;/li&gt;
+			&lt;li class&#x3D;&quot;even valno&quot;&gt;
+				&lt;input id&#x3D;&quot;no&quot; class&#x3D;&quot;radio&quot; name&#x3D;&quot;&quot; type&#x3D;&quot;radio&quot; value&#x3D;&quot;no&quot;&gt;
+				&lt;label for&#x3D;&quot;no&quot;&gt;No&lt;/label&gt;
+			&lt;/li&gt;
+			&lt;/ul&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;field dropdown is-open&quot;&gt;
+	&lt;label class&#x3D;&quot;left&quot;&gt;Select&lt;/label&gt;
+	&lt;div class&#x3D;&quot;middleColumn&quot;&gt;
+		&lt;select class&#x3D;&quot;dropdown&quot;&gt;
+			&lt;option value&#x3D;&quot;0&quot;&gt;Option 1&lt;/option&gt;
+			&lt;option value&#x3D;&quot;1&quot;&gt;Option 2&lt;/option&gt;
+			&lt;option value&#x3D;&quot;2&quot;&gt;Option 3&lt;/option&gt;
+			&lt;option value&#x3D;&quot;3&quot;&gt;Option 4&lt;/option&gt;
+		&lt;/select&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;field text password&quot;&gt;
+	&lt;label class&#x3D;&quot;left&quot; for&#x3D;&quot;CustomMemberLoginForm_LoginForm_Password&quot;&gt;Password&lt;/label&gt;
+	&lt;div class&#x3D;&quot;middleColumn&quot;&gt;
+		&lt;input type&#x3D;&quot;password&quot; name&#x3D;&quot;Password&quot; class&#x3D;&quot;text password&quot; id&#x3D;&quot;CustomMemberLoginForm_LoginForm_Password&quot; autocomplete&#x3D;&quot;off&quot;&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;field checkbox&quot;&gt;
+	&lt;input type&#x3D;&quot;checkbox&quot; name&#x3D;&quot;Remember&quot; value&#x3D;&quot;1&quot; class&#x3D;&quot;checkbox&quot; id&#x3D;&quot;CustomMemberLoginForm_LoginForm_Remember&quot;&gt;
+	&lt;label class&#x3D;&quot;right&quot; for&#x3D;&quot;CustomMemberLoginForm_LoginForm_Remember&quot;&gt;Remember me next time?&lt;/label&gt;
+&lt;/div&gt;
+	&lt;/fieldset&gt;
+	&lt;div class&#x3D;&quot;Actions&quot;&gt;
+	&lt;input type&#x3D;&quot;submit&quot; name&#x3D;&quot;action_dologin&quot; value&#x3D;&quot;Log in&quot; class&#x3D;&quot;action&quot; id&#x3D;&quot;CustomMemberLoginForm_LoginForm_action_dologin&quot;&gt;
+	&lt;p id&#x3D;&quot;ForgotPassword&quot;&gt;&lt;a href&#x3D;&quot;Security/lostpassword&quot;&gt;I&#x27;ve lost my password&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/form&gt;</code>
+										</pre>
+								</div>
+
+								<div class="kss__guidecontent">
+									<form>
+	<fieldset>
+<div class="field text">
+	<label class="left" for="CustomMemberLoginForm_LoginForm_Email">Email</label>
+	<div class="middleColumn">
+		<input type="text" name="Email" class="text" id="CustomMemberLoginForm_LoginForm_Email">
+	</div>
+</div>
+<div class="field optionset">
+	<label class="left">Are you an admin?</label>
+	<div class="middleColumn">
+		<ul class="optionset">
+			<li class="odd valyes">
+				<input id="yes" class="radio" name="" type="radio" value="yes" checked="">
+				<label for="yes">Yes</label>
+			</li>
+			<li class="even valno">
+				<input id="no" class="radio" name="" type="radio" value="no">
+				<label for="no">No</label>
+			</li>
+			</ul>
+	</div>
+</div>
+<div class="field dropdown is-open">
+	<label class="left">Select</label>
+	<div class="middleColumn">
+		<select class="dropdown">
+			<option value="0">Option 1</option>
+			<option value="1">Option 2</option>
+			<option value="2">Option 3</option>
+			<option value="3">Option 4</option>
+		</select>
+	</div>
+</div>
+<div class="field text password">
+	<label class="left" for="CustomMemberLoginForm_LoginForm_Password">Password</label>
+	<div class="middleColumn">
+		<input type="password" name="Password" class="text password" id="CustomMemberLoginForm_LoginForm_Password" autocomplete="off">
+	</div>
+</div>
+<div class="field checkbox">
+	<input type="checkbox" name="Remember" value="1" class="checkbox" id="CustomMemberLoginForm_LoginForm_Remember">
+	<label class="right" for="CustomMemberLoginForm_LoginForm_Remember">Remember me next time?</label>
+</div>
+	</fieldset>
+	<div class="Actions">
+	<input type="submit" name="action_dologin" value="Log in" class="action" id="CustomMemberLoginForm_LoginForm_action_dologin">
+	<p id="ForgotPassword"><a href="Security/lostpassword">I've lost my password</a></p>
+</div>
+</form>
+								</div>
+
+
+							</div>
+						</section>
+						<section class="kss__section">
+							<div class="kss__guide">
+								<h2 class="kss__guidetitle">6.2 Typography</h2>
+								<div class="kss__guidecontent">
+										<p>Typography styles. These are shared with the CMS.</p>
+
+
+										<p class="kss__guidecodeheading"><span>Example</span></p>
+										<pre class="kss__guidecode">
+<code class="prettyprint prettyprinted lang-html">&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;p&gt;Paragraph with &lt;a href&#x3D;&quot;#&quot;&gt;a text link&lt;/a&gt;&lt;/p&gt;
+&lt;div class&#x3D;&quot;type--content&quot;&gt;
+&lt;ul&gt;
+	&lt;li&gt;Unordered list item&lt;/li&gt;
+	&lt;li&gt;Unordered list item&lt;/li&gt;
+	&lt;li&gt;Unordered list item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+	&lt;li&gt;Ordered list item&lt;/li&gt;
+	&lt;li&gt;Ordered list item&lt;/li&gt;
+	&lt;li&gt;Ordered list item&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;p class&#x3D;&quot;type--center&quot;&gt;Center aligned&lt;/p&gt;
+&lt;p class&#x3D;&quot;type--right&quot;&gt;Right aligned&lt;/p&gt;</code>
+										</pre>
+								</div>
+
+								<div class="kss__guidecontent">
+									<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<p>Paragraph with <a href="#">a text link</a></p>
+<div class="type--content">
+<ul>
+	<li>Unordered list item</li>
+	<li>Unordered list item</li>
+	<li>Unordered list item</li>
+</ul>
+<ol>
+	<li>Ordered list item</li>
+	<li>Ordered list item</li>
+	<li>Ordered list item</li>
+</ol>
+</div>
+<p class="type--center">Center aligned</p>
+<p class="type--right">Right aligned</p>
+								</div>
+
+
+							</div>
+						</section>
+		</article>
+	</main>
+
+	<!-- SCRIPTS -->
+	<script src="kss-assets/kss.js"></script>
+	<script src="kss-assets/scrollspy.js"></script>
+	<script src="kss-assets/prettify.js"></script>
+	<script>
+		prettyPrint();
+		var spy = new ScrollSpy('#kss-node', {
+			nav: '.kss-nav__menu-child > li > a',
+			className: 'is-in-viewport'
+		});
+	</script>
+	<script src="../../themes/base/build/bundle-vendor.js"></script>
+<script src="../../themes/base/build/bundle-head.js"></script>
+<script src="../../themes/base/build/bundle-index.js"></script>
+
+
+	<!-- Automatically built using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+</body>
+</html>

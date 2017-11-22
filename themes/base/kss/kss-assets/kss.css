@@ -1,0 +1,196 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+.kss {
+	margin: 0;
+	padding: 0;
+	color: #2d2d2d;
+	font-family: Helvetica,Arial,sans-serif;
+	font-size: 1.6rem;
+}
+
+.kss__sidebar {
+	overflow: hidden;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 15%;
+	height: 100vh;
+	background: #2d2d2d;
+	color: #fff;
+}
+
+.kss__main {
+	float: left;
+	width: 85%;
+	margin-left: 15%;
+}
+
+.kss__content {
+	overflow: hidden;
+}
+
+.kss__section {
+	margin-bottom: 50px;
+	padding: 50px 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.kss__guide {
+	overflow: hidden;
+	width: 75%;
+	margin: 0 auto;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.kss__guidetitle {
+	height: 60px;
+	margin: 0;
+	padding: 0 40px;
+	line-height: 60px;
+	color: #2d2d2d;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	font-style: italic;
+	font-weight: bold;
+	font-size: 3rem;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.kss__guidecontent {
+	padding: 40px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.kss__guidesubheading {
+	margin: 0 0 20px 0;
+	color: #2d2d2d;
+	font-weight: bold;
+	font-size: 2rem;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.kss__guidereference {
+	overflow: hidden;
+	height: 60px;
+	margin: 0;
+	padding: 0 40px;
+	line-height: 60px;
+	color: rgba(0, 0, 0, 0.3);
+}
+
+.kss__guidecode {
+	display: block;
+	margin: 0;
+	padding: 1em;
+	background: #2d2d2d;
+	font-family: monospace, serif;
+	color: #fff;
+}
+
+.kss__guidecodeheading {
+	margin: 0;
+	background: #444;
+	color: #fff;
+}
+
+.kss__guidecodeheading span {
+	display: block;
+	width: 100px;
+	padding: 10px 20px;
+	background: #2d2d2d;
+	border-bottom: 3px solid #e63207;
+	color: #fff;
+}
+
+.kss__navmenu {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.kss__navmenuitem {
+	margin: 0;
+	padding: 0;
+	height: 60px;
+}
+
+.kss__navmenuitem a {
+	display: block;
+	padding: 0 40px;
+	font-size: 2rem;
+	line-height: 60px;
+	text-decoration: none;
+	color: #fff;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+	transition: all 0.3s ease-out;
+}
+
+.kss__navmenuitem a:hover,
+.kss__navmenuitem a:focus,
+.kss__navmenuitem a.current {
+	color: #e63207;
+	border-color: rgba(255, 255, 255, 0.6);
+}
+
+.logo {
+	display: block;
+	height: 50px;
+	line-height: 50px;
+	margin: 40px;
+	border: 3px solid #fff;
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	transition: all 0.3s ease-out;
+}
+
+.logo:hover,
+.logo:focus {
+	color: #e63207;
+	border: 3px solid #e63207;
+}
+
+.kss__guidecode--inline span {
+	color: #e63207;
+}
+
+/* desert scheme ported from vim to google prettify */
+.kss__guidecode.prettyprint { display: block; background-color: #333 }
+.kss__guidecode .nocode { background-color: none; color: #000 }
+.kss__guidecode .str { color: #ffa0a0 } /* string  - pink */
+.kss__guidecode .kwd { color: #f0e68c; font-weight: bold }
+.kss__guidecode .com { color: #87ceeb } /* comment - skyblue */
+.kss__guidecode .typ { color: #98fb98 } /* type    - lightgreen */
+.kss__guidecode .lit { color: #cd5c5c } /* literal - darkred */
+.kss__guidecode .pun { color: #fff }    /* punctuation */
+.kss__guidecode .pln { color: #fff }    /* plaintext */
+.kss__guidecode .tag { color: #f0e68c; font-weight: bold } /* html/xml tag    - lightyellow */
+.kss__guidecode .atn { color: #bdb76b; font-weight: bold } /* attribute name  - khaki */
+.kss__guidecode .atv { color: #ffa0a0 } /* attribute value - pink */
+.kss__guidecode .dec { color: #98fb98 } /* decimal         - lightgreen */
+
+/* Specify class=linenums on a pre to get line numbering
+ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE } /* IE indents via margin-left */
+li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }
+/* Alternate shading for lines */
+li.L1,li.L3,li.L5,li.L7,li.L9 { }
+
+@media print {
+	.kss__guidecode.prettyprint { background-color: none }
+	.kss__guidecode .str, code .str { color: #060 }
+	.kss__guidecode .kwd, code .kwd { color: #006; font-weight: bold }
+	.kss__guidecode .com, code .com { color: #600; font-style: italic }
+	.kss__guidecode .typ, code .typ { color: #404; font-weight: bold }
+	.kss__guidecode .lit, code .lit { color: #044 }
+	.kss__guidecode .pun, code .pun { color: #440 }
+	.kss__guidecode .pln, code .pln { color: #000 }
+	.kss__guidecode .tag, code .tag { color: #006; font-weight: bold }
+	.kss__guidecode .atn, code .atn { color: #404 }
+	.kss__guidecode .atv, code .atv { color: #060 }
+}

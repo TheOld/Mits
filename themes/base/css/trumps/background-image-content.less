@@ -1,0 +1,60 @@
+// ==========================================================================
+// Generic style for slice with background
+// image and content on top
+// ==========================================================================
+
+// block
+.background-image-content{
+	position: relative;
+}
+
+// elements
+.background-image-content__background{
+	.background--contain;
+	height: 0;
+}
+
+.background-image-content__content{
+	.full-size(absolute);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	& > :first-child {
+		// not a magic value, correspond to the skewed
+		// tile margin with extra margin
+		margin-top: @skewed-tile-whitespace + (@skewed-tile-whitespace * .5);
+	}
+}
+
+// modifiers
+.background-image-content--top{
+	.background-image-content__content{
+		justify-content: start;
+	}
+}
+
+.background-image-content--bottom{
+	.background-image-content__content{
+		justify-content: flex-end;
+	}
+}
+
+.background-image-content--left{
+	.background-image-content__content > *{
+		align-self: flex-start;
+	}
+}
+
+.background-image-content--right{
+	.background-image-content__content > *{
+		align-self: flex-end;
+	}
+}
+
+.background-image-content--nomargin{
+	.background-image-content__content > :first-child{
+		margin-top: 0;
+	}
+}

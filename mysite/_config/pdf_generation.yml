@@ -1,0 +1,22 @@
+---
+Name: PDFgeneration
+After: 'framework/*'
+---
+
+#Builder PDF
+SilverStripe\Core\Injector\Injector:
+  SnappyPDF:
+    class: Knp\Snappy\Pdf
+    constructor:
+      - /usr/bin/xvfb-run /usr/bin/wkhtmltopdf
+      -
+        zoom: 0.9
+        margin-bottom: 8
+        margin-top: 8
+        margin-left: 8
+        margin-right: 8
+        dpi: 96
+
+  MitsubishiMotors\Controllers\VehicleBuilderController:
+    properties:
+      SnappyPDF: %$SnappyPDF

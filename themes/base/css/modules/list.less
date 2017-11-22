@@ -1,0 +1,41 @@
+// ==========================================================================
+// Generic style for list
+// ==========================================================================
+
+// block
+.list{
+	display: flex;
+	flex-direction: column;
+}
+
+// elements
+.list__item{
+	display: flex;
+	align-items: center;
+
+	img{
+		width: 100%;
+		height: auto;
+	}
+}
+
+// modifier
+.list--inline{
+	flex-direction: row;
+}
+
+.list--center{
+	justify-content: center;
+}
+
+.list--right{
+	justify-content: flex-end;
+}
+
+.list__item--stacked{
+	flex-direction: column;
+}
+
+.list__item--spread {
+	justify-content: space-between;
+}

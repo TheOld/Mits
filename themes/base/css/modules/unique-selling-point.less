@@ -1,0 +1,47 @@
+// ==========================================================================
+// Unique selling point list style
+// ==========================================================================
+
+// block
+.unique-selling-point{
+	font-family: @font-family-light;
+}
+
+.unique-selling-point__item{
+	display: flex;
+
+	&:last-child{
+		margin-bottom: 0;
+	}
+}
+
+.unique-selling-point__icon{
+	width: 7rem;
+	height: 7rem;
+	margin-right: 4rem;
+	display: inline-block;
+	vertical-align: top;
+
+	img, svg{
+		width: 100%;
+		height: auto;
+		fill: @color-quaternary;
+	}
+
+	@media @md {
+		width: 2rem;
+		height: 2rem;
+		margin-right: 1rem;
+	}
+}
+
+.unique-selling-point__label{
+	display: inline-block;
+	color: @color-quaternary;
+	width: calc(100% - 3em);
+	.font-size(35, 50);
+
+	@media @md {
+		.font-size(14, 28);
+	}
+}

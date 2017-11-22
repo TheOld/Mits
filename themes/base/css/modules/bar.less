@@ -1,0 +1,20 @@
+.bar {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 135px;
+	z-index: 1;
+	text-align: center;
+	background: @color-secondary;
+	box-shadow: 0 0 10px fade(@color-primary, 10%), 0 0 5px fade(@color-primary, 10%);
+}
+
+.bar__inner {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 500px;
+	height: 100%;
+	margin: 0 auto;
+}

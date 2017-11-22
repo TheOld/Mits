@@ -1,0 +1,13 @@
+{
+  "minify": true,
+  "options": [
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/touchevents",
+    "test/forms/validation",
+    "test/storage/localstorage",
+    "svg/smil",
+    "img/webp"
+  ]
+}

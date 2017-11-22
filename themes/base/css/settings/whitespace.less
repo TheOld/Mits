@@ -1,0 +1,56 @@
+// Margins & Paddings
+//
+// generate a set of helpers to manage whitespace globally:
+//
+// m--1x       : apply a general margin around the element
+// mt--1x      : apply a top margin
+// mr--1x      : apply a right margin
+// mb--1x      : apply a bottom margin
+// ml--1x      : apply a left margin
+// my--1x      : apply vertical margin (bottom and top)
+// mx--1x      : apply horizontal  margin (left and right)
+//
+// the same helpers will be generated for padding
+//
+// Update the @whitespaces variables to change the number
+// of modifiers generated for every helper: m--1x, m--2x, m--3x.....
+//
+// TODO: update margins and padding based on breakpoints
+
+// change that variable for more granularity in
+// the margin and padding output
+@whitespaces: 15;
+
+.ml-auto { margin-left: auto; }
+.mr-auto { margin-right: auto; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mb-auto { margin-bottom: auto; }
+.mt-auto { margin-top: auto; }
+
+.whitespace-helpers(@counter) when (@counter > 0) {
+	.whitespace-helpers((@counter - 1));
+
+	@desktop: (@counter * .5);
+	@mobile: (@counter + @desktop);
+
+	// generate margin helper
+	.m--@{counter}x  { margin: 			~"@{mobile}rem"; @media @sm { margin: ~"@{desktop}rem"; } }
+	.mt--@{counter}x { margin-top: 		~"@{mobile}rem"; @media @sm { margin-top: ~"@{desktop}rem"; } }
+	.mr--@{counter}x { margin-right: 	~"@{mobile}rem"; @media @sm { margin-right: ~"@{desktop}rem"; } }
+	.mb--@{counter}x { margin-bottom: 	~"@{mobile}rem"; @media @sm { margin-bottom: ~"@{desktop}rem"; } }
+	.ml--@{counter}x { margin-left: 	~"@{mobile}rem"; @media @sm { margin-left: ~"@{desktop}rem"; } }
+	.my--@{counter}x { margin-bottom: 	~"@{mobile}rem"; margin-top:	~"@{mobile}rem"; @media @sm { margin-bottom: 	~"@{desktop}rem"; margin-top:	~"@{desktop}rem";  } }
+	.mx--@{counter}x { margin-left: 	~"@{mobile}rem"; margin-right:	~"@{mobile}rem"; @media @sm { margin-left: 	~"@{desktop}rem"; margin-right: ~"@{desktop}rem";  } }
+
+	// generate padding helpers
+	.p--@{counter}x  { padding: 		~"@{mobile}rem"; @media @sm { padding: ~"@{desktop}rem"; } }
+	.pt--@{counter}x { padding-top: 	~"@{mobile}rem"; @media @sm { padding-top: ~"@{desktop}rem"; } }
+	.pr--@{counter}x { padding-right: 	~"@{mobile}rem"; @media @sm { padding-right: ~"@{desktop}rem"; } }
+	.pb--@{counter}x { padding-bottom: 	~"@{mobile}rem"; @media @sm { padding-bottom: ~"@{desktop}rem"; } }
+	.pl--@{counter}x { padding-left: 	~"@{mobile}rem"; @media @sm { padding-left: ~"@{desktop}rem"; } }
+	.py--@{counter}x { padding-bottom: 	~"@{mobile}rem"; padding-top:	~"@{mobile}rem"; @media @sm { padding-bottom: 	~"@{desktop}rem"; padding-top:	~"@{desktop}rem"; } }
+	.px--@{counter}x { padding-left: 	~"@{mobile}rem"; padding-right:~"@{mobile}rem"; @media @sm { padding-left: 	~"@{desktop}rem"; padding-right:	~"@{desktop}rem"; } }
+}
+
+// start the loop
+.whitespace-helpers(@whitespaces);

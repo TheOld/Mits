@@ -1,0 +1,84 @@
+// config
+@debug: false;
+
+// declare breakpoints
+@screen-xs: 320px;  // Extra small screen / phone (portrait)
+@screen-sm: 480px;  // Small screen / phone (landscape)
+@screen-md: 768px;  // Small screen / tablet
+@screen-lg: 992px;  // Large screen / desktop
+@screen-xl: 1680px; // Extra Large screen / wide desktop
+
+// create list to pass media query data
+// if a breakpoint name changes, remember to
+// update it in the list below as well
+@mq-sync: "mobile @{screen-xs}",
+          "mobile @{screen-sm}",
+          "tablet @{screen-md}",
+          "desktop @{screen-lg}",
+          "desktop @{screen-xl}";
+
+// you need to explicity tell LESS how many
+// breakpoints you have
+@number-of-breakpoints: 5;
+
+// build each media query for js ingestion
+.loopingClass(@number-of-breakpoints);
+.loopingClass(@index) when (@index > 0) {
+    .loopingClass(@index - 1);
+    @breakpoint-info: extract(@mq-sync, @index);
+    @breakpoint-size: ~`@{breakpoint-info}.split(' ')[1].replace('"','')`;
+    @media screen and (min-width: @breakpoint-size) {
+        head { font-family: @breakpoint-info; }
+        body:before { content: @breakpoint-info; }
+    }
+}
+
+head {
+  clear: both;
+  // store hash of all breakpoints
+  title { font-family: ~"@{mq-sync}"; }
+}
+
+// debug styles to see breakpoint info
+body:before {
+  display: none;
+  .debug-styles(@debug);
+}
+
+.debug-styles(@d) when (@d) {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  background-color: rgba(0,0,0,0.8);
+  text-align: center;
+  color: #FFF;
+  padding: 10px;
+  z-index: 1000;
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
+
+// Media Queries (Mobile first approach)
+// ==========================================================================
+@xs: ~"(min-width: @{screen-xs})"; // 320px  ->
+@sm: ~"(min-width: @{screen-sm})"; // 480px  ->
+@md: ~"(min-width: @{screen-md})"; // 768px  ->
+@lg: ~"(min-width: @{screen-lg})"; // 992px  ->
+@xl: ~"(min-width: @{screen-xl})"; // 1200px ->
+
+// Grid settings (name, breakpoint, gutter)
+// ==========================================================================
+@extrasmall: sm, @xs, 40px;
+@small: sm, @sm, 40px;
+@medium: md, @md, 20px;
+@large: lg, @lg;
+@extralarge: xl, @xl;
+
+@hi-dpi: ~"(-webkit-min-device-pixel-ratio: 2), (min--moz-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)";
+@not-sm: ~"(min-width: @{screen-md} + 1)";
+@not-lg: ~"(max-width: @{screen-md})";
+

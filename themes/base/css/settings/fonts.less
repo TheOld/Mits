@@ -1,0 +1,39 @@
+// Font sizes
+//
+// generate a set of helpers to manage font size globally:
+//
+// font--1x      : font-size: 1rem
+// font--2x      : font-size: 1.1rem
+// font--3x      : font-size: 1.2rem
+// font--4x      : font-size: 1.3rem
+// font--5x      : font-size: 1.4rem
+// font--6x      : font-size: 1.5rem
+//
+// Update the @fonts variables to change the number
+// of modifiers generated
+//
+// TODO: add line-height management
+
+// change that variable for more granularity in
+// the font-size output
+@fonts: 7;
+
+
+.fonts-helpers(@counter) when (@counter > 0) {
+	.fonts-helpers((@counter - 1));
+
+	@value: round((0.9 + (@counter * .1)), 1) * 10;
+	@responsive-value: round(@value * 3);
+
+	// generate font size helpers
+	.font--@{counter}x {
+		.font-size(@responsive-value, @responsive-value * 1.5);
+
+		@media @md {
+			.font-size(@value, @value * 2);
+		}
+	}
+}
+
+// start the loop
+.fonts-helpers(@fonts);

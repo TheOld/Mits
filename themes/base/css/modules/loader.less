@@ -1,0 +1,55 @@
+// ==========================================================================
+// Loader module (can take different form: progress bar, spinner...)
+// ==========================================================================
+
+// block
+.loader{
+}
+
+// elements
+.loader__wrapper{
+	.full-size(absolute);
+	left: 0;
+	top: 0;
+	z-index: 11;
+	display: flex;
+	justify-content: center;
+
+	.spinner{
+		position: relative;
+	}
+}
+
+.loader__progressbar{
+	background: @color-secondary;
+	width: 150px;
+	height: 3px;
+	position: relative;
+}
+
+.loader__percentage{
+	.full-size(absolute);
+	transform-origin: left;
+	transform: scaleX(0);
+	background: @color-brand;
+	transition: all 0.2s;
+}
+
+.loader__label{
+	.font-size(40, 60);
+
+	@media @md {
+		.font-size(15, 30);
+	}
+}
+
+// modifiers
+.loader__wrapper--center{
+	align-items: center;
+}
+.loader__wrapper--top{
+	align-items: top;
+}
+.loader__wrapper--bottom{
+	align-items: flex-end;
+}

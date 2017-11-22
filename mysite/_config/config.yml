@@ -1,0 +1,75 @@
+---
+Name: mysite
+After: 'framework/*'
+---
+
+SilverStripeSVG\SVGTemplate:
+  base_path: ''
+
+SilverStripe\View\SSViewer:
+  theme_enabled: true
+  themes:
+    - base
+    - '$default'
+
+SilverStripe\Forms\DateField:
+  default_config:
+    showcalendar: true
+
+SilverStripe\Forms\DatetimeField:
+  default_config:
+    showcalendar: true
+
+SilverStripe\SiteConfig\SiteConfig:
+  extensions:
+    - MitsubishiMotors\Extensions\CustomSiteConfig
+
+MitsubishiMotors\Pages\Page:
+  extensions:
+    - Heyday\Analytics\AnalyticsExtension
+SilverStripe\Core\Injector\Injector:
+  AnalyticsService:
+    class: Heyday\Analytics\GoogleTagManagerProvider
+    constructor:
+      0: 'GTM-XXXXX'
+
+SilverStripe\Assets\File:
+  allowed_extensions:
+    - svg
+
+SilverStripe\Admin\LeftAndMain:
+  admin_style_disabled: false
+  admin_style:
+    ColorBackgroundMenuHeader: '#005b94'
+    ColorForegroundSiteName: '#fff'
+    ColorForegroundProfile: '#fff'
+    ColorIconProfile: '#fff'
+    ColorIconLogout: '#fff'
+    ColorBorderBottomSiteName: '#106ba4'
+    ColorBackgroundMenu: '#20282c'
+    ColorBackgroundMenuItem: '#20282c'
+    ColorForegroundMenuItem: '#bfc0c0'
+    ColorBackgroundHoverMenuItem: 'rgba(255, 255, 255, 0.1)'
+    ColorForegroundHoverMenuItem: '#fff'
+    ColorBackgroundCurrentMenuItem: '#139fda'
+    ColorForegroundCurrentMenuItem: '#fff'
+    ColorBorderRightMenuHide: false
+    ColorBorderRightMenu: '#20282c'
+    ColorIconMenuItem: '#bfc0c0'
+    ColorIconHoverMenuItem: '#fff'
+    ColorIconCurrentMenuItem: '#fff'
+    ColorMenuItemAfterText: '#fff'
+    ColorBackgroundToggle: '#20282c'
+    ColorBorderTopToggle: '#20282c'
+    ColorToggleStatus: '#fff'
+    ColorToggleCollapse: '#fff'
+
+Upload_Validator:
+  default_max_file_size:
+    '[image]': '2M'
+
+SilverStripe\Core\Injector\Injector:
+  RedirectsCache:
+    class: Doctrine\Common\Cache\FilesystemCache
+    constructor:
+      0: 'silverstripe-redirects/cache'

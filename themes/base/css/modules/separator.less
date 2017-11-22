@@ -1,0 +1,25 @@
+// ==========================================================================
+// Separator style
+// ==========================================================================
+
+// block
+.separator{
+	position: relative;
+	border: 1px solid transparent;
+
+	&:after{
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		background: fade(@color-quinary, 50%);
+	}
+}
+
+// modifiers
+.separator--vertical{
+	&:after{
+		// need a better solution
+		transform: rotate(90deg) scaleX(2);
+	}
+}

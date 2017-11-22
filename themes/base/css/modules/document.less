@@ -1,0 +1,60 @@
+// ==========================================================================
+// Document tile
+// ==========================================================================
+
+// block
+.document{
+	display: inline-block;
+	vertical-align: top;
+
+	&:hover{
+		.document__mask{
+			transform: scaleY(1);
+		}
+		.document__action{
+			opacity: 1;
+			transform: translateY(-50%);
+		}
+	}
+}
+
+.document__wrapper{
+	width: 210px;
+	height: 295px;
+}
+
+.document__image{
+	.full-size(relative);
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.document__mask{
+	.full-size(absolute);
+	opacity: 0.8;
+	transform: scaleY(0);
+	transform-origin: 0 100%;
+	transition: all 0.2s @easeMitsubishi;
+}
+
+.document__action{
+	.vertical-align(absolute);
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	opacity: 0;
+	transform: translateY(-60%);
+	transition: all 0.4s @easeMitsubishi;
+	transition-delay: 0.1s;
+}
+
+.document__infos{
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}

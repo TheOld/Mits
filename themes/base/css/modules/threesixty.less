@@ -1,0 +1,77 @@
+// ==========================================================================
+// Threesixty style
+// ==========================================================================
+
+// block
+.threesixty{
+	.full-size(absolute);
+}
+
+// elements
+.threesixty__label{
+	position: absolute;
+	width: 100%;
+	transition: all 0.2s;
+}
+
+.threesixty__knob{
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: 0;
+	z-index: 10;
+	background: #426da3;
+	border-radius: 100%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: url('@{dir-images}cursors/grab.png') 56 64, auto;
+
+	span{
+		pointer-events: none;
+		user-select: none;
+	}
+
+	&:active{
+		cursor: url('@{dir-images}cursors/grabbing.png') 100 50, auto;
+	}
+}
+
+.threesixty__canvas{
+	position: absolute;
+	left: 0;
+	z-index: 1;
+	user-select: none;
+	cursor: grab;
+	cursor: url('@{dir-images}cursors/grab.png') 0 0, pointer; /* Legacy */
+	cursor: url('@{dir-images}cursors/grab.svg') 0 0, pointer; /* FF */
+	cursor: -webkit-image-set(url('@{dir-images}cursors/grab.png') 1x, url('@{dir-images}cursors/grab@2x.png') 2x) 0 0, pointer;
+
+	&:active{
+		cursor: grabbing;
+		cursor: url('@{dir-images}cursors/grabbing.png') 0 0, pointer; /* Legacy */
+		cursor: url('@{dir-images}cursors/grabbing.svg') 0 0, pointer; /* FF */
+		cursor: -webkit-image-set(url('@{dir-images}cursors/grabbing.png') 1x, url('@{dir-images}cursors/grabbing@2x.png') 2x) 0 0, pointer;
+	}
+}
+
+.threesixty__controller{
+	position: absolute;
+	width: 100%;
+	height: 50px;
+	bottom: 0;
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	path{
+		stroke-width: 1;
+		stroke: #000;
+		stroke-linecap: round;
+		fill: none;
+	}
+}

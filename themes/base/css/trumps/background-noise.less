@@ -1,0 +1,23 @@
+// ==========================================================================
+// Add background noise
+// ==========================================================================
+
+.background-noise(@opacity: 0.03){
+	&:after{
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		z-index: 0;
+		opacity: @opacity;
+		background-image: url('@{dir-images}layout/noise.jpg');
+		pointer-events: none;
+	}
+}
+
+// create a class to be able to add it to every element
+.background-noise{
+	.background-noise();
+}

@@ -1,0 +1,20 @@
+---
+After: 'silverstripe-cacheinclude/*'
+---
+DataObject:
+  extensions:
+    - Heyday\CacheInclude\SilverStripe\InvalidationExtension
+
+SilverStripe\Core\Injector\Injector:
+  CacheIncludeConfig:
+    class: Heyday\CacheInclude\Configs\ArrayConfig
+    constructor:
+      0:
+        # Define your cache settings here. For configuration instructions, see the CacheInclude readme:
+        # https://github.com/heyday/silverstripe-cacheinclude/blob/master/README.md#cache-block-config
+        Page_Footer:
+          context: full
+          type: Includes
+        CacheTest:
+          context: no
+          type: Includes

@@ -1,0 +1,39 @@
+// ==========================================================================
+// Spinner style (used in loader component and by nprogress)
+// ==========================================================================
+
+// spinner
+.spinner{
+	display: block;
+	position: absolute;
+	z-index: 1031;
+	transform-origin: center center;
+
+	// this is not BEM but it's required by the nprogress lib
+	&-icon{
+		width: 18px;
+		height: 18px;
+		box-sizing: border-box;
+		border: solid 2px transparent;
+		border-top-color: @color-brand;
+		border-left-color: @color-brand;
+		border-radius: 50%;
+		animation: spin 400ms linear infinite;
+	}
+}
+
+.spinner__logo{
+	width: 6rem;
+	height: 6rem;
+
+	@media @md {
+		width: 3rem;
+		height: 3rem;
+	}
+}
+
+// TODO: move that to a different location
+@keyframes spin {
+	0%   { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}

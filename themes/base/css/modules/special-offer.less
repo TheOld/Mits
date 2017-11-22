@@ -1,0 +1,19 @@
+// ==========================================================================
+// Special Offer
+// ==========================================================================
+
+// block
+.special-offer{
+	@color: @color-brand;
+	text-transform: uppercase;
+	font-family: @font-family-bold;
+	display: inline-block;
+	border-radius: 0.2rem;
+	color: @color;
+	.font-size(34, 35);
+	&:extend(.icon-star all);
+
+	@media @md {
+		.font-size(14, 15);
+	}
+}

@@ -1,0 +1,204 @@
+// ==========================================================================
+// Accessory tile
+// ==========================================================================
+
+// block
+.tile{
+	height: 85rem;
+	overflow: hidden;
+	position: relative;
+	.block-drop-shadow;
+
+	@media @md {
+		height: 35rem;
+	}
+}
+
+// elements
+.tile__image{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	img{
+		width: 100%;
+		height: auto;
+	}
+}
+
+.tile__infos{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: left;
+	padding: 3rem;
+	background: @color-secondary;
+
+	@media @md {
+		padding: 2rem;
+	}
+}
+
+.tile__action{
+	&:extend(.icon-plus all);
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: @color-brand;
+	padding: 2.5rem 4rem;
+	text-transform: uppercase;
+	color: @color-secondary;
+	font-family: @font-family-bold;
+	cursor: pointer;
+
+	&:before{
+		transition: all 0.2s;
+	}
+
+	&:hover{
+		&:before{
+			transform: rotate(180deg);
+		}
+	}
+
+	@media @md {
+		padding: 1.2rem 1.6rem;
+	}
+}
+
+.tile__title{
+	.font-size(60, 80);
+	display: block;
+	color: @color-tertiary;
+	font-family: @font-family-bold;
+
+	@media @md {
+		.font-size(16, 20);
+	}
+}
+
+.tile__subtitle{
+	.font-size(60, 90);
+	display: block;
+	color: @color-quaternary;
+	font-family: @font-family-regular;
+
+	@media @md {
+		.font-size(16, 25);
+	}
+}
+
+.tile__emphasize{
+	.font-size(60, 80);
+	color: @color-brand;
+	font-family: @font-family-bold;
+	margin-left: 1rem;
+	text-transform: uppercase;
+
+	@media @md {
+		.font-size(16, 20);
+	}
+}
+
+.tile__list{
+	margin: 2rem 2rem 0 6rem;
+	list-style: disc;
+	font-family: @font-family-light;
+
+	@media @md {
+		margin: 2rem 2rem 0 2rem;
+	}
+}
+
+.tile__list__item{
+	.font-size(38, 56);
+	color: @color-quaternary;
+
+	@media @md {
+		.font-size(14, 20);
+	}
+}
+
+.tile__center{
+	@media @md {
+		.vertical-align(absolute);
+
+	}
+}
+
+// modifiers
+.tile--list{
+	height: auto;
+
+	.tile__image{
+		height: 85rem;
+		width: 100%;
+		position: inherit;
+	}
+	.tile__action{
+		right: 0;
+	}
+	.tile__infos{
+		position: inherit;
+		width: 100%;
+		right: 0;
+		top: 0;
+	}
+
+	@media @md {
+		height: 35rem;
+
+		.tile__image{
+			position: absolute;
+			height: 100%;
+			width: 60%;
+		}
+		.tile__action{
+			right: 40%;
+		}
+		.tile__infos{
+			position: absolute;
+			width: 40%;
+			right: 0;
+			top: 0;
+		}
+	}
+}
+
+.tile--selected{
+	.tile__title{
+		color: @color-brand;
+	}
+	.tile__action{
+		&:extend(.icon-tick all);
+		&:after{
+			text-transform: uppercase;
+			content: attr(data-label-selected);
+			margin-left: 0.5rem;
+			transition: all 0.2 @easeMitsubishi;
+		}
+		&:hover{
+			&:before{
+				transform: attr(data-label-selected);
+				transform: rotate(0);
+			}
+			&:after{
+				content: 'remove';
+			}
+		}
+	}
+}
+
+.tile--no-action{
+	.tile__action{
+		display: none;
+	}
+}
+
+.tile__subtitle--small{
+	.font-size(40, 70);
+
+	@media @md {
+		.font-size(14, 22);
+	}
+}

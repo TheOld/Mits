@@ -1,0 +1,278 @@
+
+// Form
+//
+// Markup:
+// <form>
+// 	<fieldset>
+//	<div class="field text">
+//		<label class="left" for="CustomMemberLoginForm_LoginForm_Email">Email</label>
+//		<div class="middleColumn">
+//			<input type="text" name="Email" class="text" id="CustomMemberLoginForm_LoginForm_Email">
+//		</div>
+//	</div>
+//	<div class="field optionset">
+//		<label class="left">Are you an admin?</label>
+//		<div class="middleColumn">
+//			<ul class="optionset">
+//				<li class="odd valyes">
+//					<input id="yes" class="radio" name="" type="radio" value="yes" checked="">
+//					<label for="yes">Yes</label>
+//				</li>
+//				<li class="even valno">
+//					<input id="no" class="radio" name="" type="radio" value="no">
+//					<label for="no">No</label>
+//				</li>
+// 			</ul>
+//		</div>
+//	</div>
+// <div class="field dropdown is-open">
+// 	<label class="left">Select</label>
+// 	<div class="middleColumn">
+// 		<select class="dropdown">
+// 			<option value="0">Option 1</option>
+// 			<option value="1">Option 2</option>
+// 			<option value="2">Option 3</option>
+// 			<option value="3">Option 4</option>
+// 		</select>
+// 	</div>
+// </div>
+//	<div class="field text password">
+//		<label class="left" for="CustomMemberLoginForm_LoginForm_Password">Password</label>
+//		<div class="middleColumn">
+//			<input type="password" name="Password" class="text password" id="CustomMemberLoginForm_LoginForm_Password" autocomplete="off">
+//		</div>
+//	</div>
+//	<div class="field checkbox">
+//		<input type="checkbox" name="Remember" value="1" class="checkbox" id="CustomMemberLoginForm_LoginForm_Remember">
+//		<label class="right" for="CustomMemberLoginForm_LoginForm_Remember">Remember me next time?</label>
+//	</div>
+// 	</fieldset>
+// 	<div class="Actions">
+//		<input type="submit" name="action_dologin" value="Log in" class="action" id="CustomMemberLoginForm_LoginForm_action_dologin">
+//		<p id="ForgotPassword"><a href="Security/lostpassword">I've lost my password</a></p>
+//	</div>
+// </form>
+//
+// Style guide: Global.form
+
+form {
+	label {
+		display: block;
+		width: 100%;
+		text-transform: uppercase;
+		transition: all 0.2s @easeMitsubishi;
+		color: @color-quaternary;
+		font-family: @font-family-bold;
+		.font-size(40, 80);
+
+		&:after{
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 2px;
+			width: 100%;
+			z-index: 1;
+			background-color: @color-primary;
+			transition: all 0.2s 0.1s @easeMitsubishi;
+			transform: scaleX(0);
+			transform-origin: left;
+		}
+
+		@media @md {
+			.font-size(12, 20);
+		}
+	}
+
+	input,
+	select,
+	textarea {
+		display: block;
+		width: 100%;
+		padding: 1rem 0;
+		border: 0;
+		border-bottom: 0.2rem solid @color-quinary;
+		color: @color-primary;
+		outline: 0;
+		background-color: @color-secondary;
+		resize: vertical;
+		font-family: @font-family-light;
+		min-height: 10rem;
+		.font-size(40, 80);
+
+		&[type="radio"],
+		&[type="checkbox"] {
+			display: inline-block;
+			width: auto;
+			margin-right: 1rem;
+			margin-top: 0.2rem;
+
+			& + label {
+				display: inline;
+			}
+		}
+
+		&[type="submit"] {
+			width: auto;
+			resize: none;
+			&:extend(.button);
+		}
+
+		&[type="text"],
+		&[type="password"],
+		&[type="email"],
+		&[type="datetime"],
+		&[type="datetime-local"], {
+			background: transparent;
+			position: relative;
+		}
+
+		&:focus{
+			+ label{
+				color: @color-primary;
+				&:after{
+					transform: scaleX(1);
+				}
+			}
+		}
+
+		.placeholder({
+			opacity: 0.3;
+		});
+
+		@media @md {
+			min-height: auto;
+			.font-size(12, 20);
+		}
+	}
+
+	textarea {
+		background: transparent;
+		min-height: 100px;
+	}
+
+	select {
+		border-radius: 0;
+		padding-right: 3.5rem;
+		background: transparent;
+		background-image: url('@{dir-images}core/select-dark.png');
+		background-position: 99% 50%;
+		background-repeat: no-repeat;
+		background-size: 1.3rem 0.9rem;
+		appearance: none;
+
+		option{
+			color: @color-primary;
+		}
+
+		&::-ms-expand{
+			display: none;
+		}
+
+		&:focus{
+			&::-ms-value{
+				background: transparent;
+				color: @color-primary;
+			}
+		}
+
+		&.model{
+			background-image: url('@{dir-images}core/select-red.png');
+			text-transform: uppercase;
+			border: none;
+		}
+	}
+
+	fieldset {
+		border: 0;
+		padding: 2rem 0;
+		margin-bottom: 0;
+		transition: opacity 0.4s @easeMitsubishi;
+		.gradient-background;
+
+		&:after{
+			opacity: 0;
+			transition: all 0.5s ease-out;
+		}
+
+		&:hover{
+			&:after{
+				opacity: 1;
+			}
+		}
+
+		& > :first-child{
+			padding-left: 0;
+		}
+
+		& > :last-child{
+			padding-right: 0;
+		}
+
+		.message{
+			color: @color-error;
+			font-size: 1.2rem;
+			font-style: italic;
+			font-family: @font-family-light;
+			margin-top: 0.5rem;
+		}
+	}
+
+	.optionset {
+		margin-bottom: 3rem;
+
+		input {
+			margin-bottom: 0;
+		}
+	}
+
+	.form__group{
+		position: relative;
+
+		&--required{
+			label i{
+				.form-symbol-required; // form-symbols trump
+			}
+		}
+
+		&--valid{
+			label i{
+				.form-symbol-check; // form-symbols trump
+			}
+		}
+	}
+
+	.form__input{
+		position: relative;
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	.form__products{
+		.form__image{
+			width: 40px;
+			height: 40px;
+			border-radius: 5px;
+			overflow: hidden;
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		&__label, &__action{
+			width: 50%;
+		}
+	}
+
+	.form__image{
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	&.loading {
+		fieldset {
+			opacity: 0.2;
+		}
+	}
+}

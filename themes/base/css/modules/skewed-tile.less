@@ -1,0 +1,134 @@
+// ==========================================================================
+// Skewed tile div
+// ==========================================================================
+
+// component variable
+@skewDeg: 4.6deg;
+@offset: @skewed-tile-whitespace;
+
+// block
+.skewed-tile{
+	overflow: hidden;
+}
+
+// elements
+.skewed-tile__wrapper{
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+}
+
+.skewed-tile__container{
+	position: relative;
+}
+
+.skewed-tile__content{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	.logo{
+		max-height: 3rem;
+	}
+}
+
+.skewed-tile__background{
+	z-index: -1;
+
+	img{
+		height: auto;
+	}
+}
+
+// modifiers
+.skewed-tile--bottom-down{
+	margin-bottom: -@offset;
+
+	.skewed-tile__wrapper{
+		transform-origin: top right;
+		transform: skew(0deg, @skewDeg);
+	}
+
+	.skewed-tile__container{
+		transform: skew(0deg, -@skewDeg);
+		margin-bottom: -@offset / 2;
+	}
+}
+
+.skewed-tile--bottom-up{
+	margin-bottom: -@offset;
+
+	.skewed-tile__wrapper{
+		transform-origin: top left;
+		transform: skew(0deg, -@skewDeg);
+	}
+
+	.skewed-tile__container{
+		transform: skew(0deg, @skewDeg);
+		margin-bottom: -@offset / 2;
+	}
+}
+
+.skewed-tile--top-up{
+	margin-top: -@offset;
+
+	.skewed-tile__wrapper{
+		transform-origin: bottom right;
+		transform: skew(0deg, -@skewDeg);
+	}
+
+	.skewed-tile__container{
+		transform: skew(0deg, @skewDeg);
+		margin-top: -@offset / 2;
+	}
+}
+
+.skewed-tile--top-down{
+	margin-top: -@offset;
+
+	.skewed-tile__wrapper{
+		transform-origin: bottom left;
+		transform: skew(0deg, @skewDeg);
+	}
+
+	.skewed-tile__container{
+		transform: skew(0deg, -@skewDeg);
+		margin-top: -@offset / 2;
+	}
+}
+
+.skewed-tile--no-margin{
+	margin-bottom: 0;
+}
+
+.skewed-tile--overlap{
+	margin-bottom: 2 * -(@offset + @offset / 2);
+
+	@media @md {
+		margin-bottom: -(@offset + @offset / 2);
+	}
+}
+
+.skewed-tile--content-inline{
+	.skewed-tile__content{
+		flex-direction: row;
+	}
+}
+
+.skewed-tile--content-top{
+	.skewed-tile__content{
+		padding-top: @offset;
+		justify-content: start;
+	}
+}
+
+.skewed-tile--content-bottom{
+	.skewed-tile__content{
+		margin-bottom: -@offset;
+	}
+}

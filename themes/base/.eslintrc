@@ -1,0 +1,54 @@
+//
+// For default lint configuration for JS syntax and grammar
+// https://github.com/feross/eslint-config-standard/blob/master/eslintrc.json
+//
+// For default lint configuration for React / JSX
+// https://github.com/feross/eslint-config-standard-react/blob/master/eslintrc.json
+{
+	"parser": "babel-eslint",
+	"extends": ["standard", "standard-react", "plugin:vue-libs/recommended"],
+	"env": {
+		"jest": true
+	},
+	"globals": {
+		"google": true,
+		"cy": true
+	},
+	"rules": {
+		"indent": [1, "tab", {"SwitchCase": 1}],
+		"no-tabs": 0,
+		"space-before-function-paren": [1, "never"],
+		"no-underscore-dangle": 0,
+		"jsx-quotes": [2, "prefer-double"],
+		"semi": [2, "always"],
+		// Enforce JSX tabs
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [2, "tab"],
+		// Enforce boolean attributes notation in JSX
+		"react/jsx-boolean-value": [2, "never"],
+		// Require ES6 class declarations over React.createClass
+		"react/prefer-es6-class": [2, "always"],
+		// Enforce event handler naming conventions in JSX
+		"react/jsx-handler-names": [0, {
+			"eventHandlerPrefix": "handle",
+			"eventHandlerPropPrefix": "on",
+		}],
+		// Validate JSX has key prop when in array or iterator
+		"react/jsx-key": 0,
+		"react/jsx-no-duplicate-props": [0, {
+			"ignoreCase": false
+		}],
+		// Enforce component methods order
+		"react/sort-comp": [2, {
+			"order": [
+				"static-methods",
+				"constructor",
+				"lifecycle",
+				"render",
+				"/^render.+$/",
+				"/^handle.+$/",
+				"everything-else"
+			]
+		}]
+	}
+}

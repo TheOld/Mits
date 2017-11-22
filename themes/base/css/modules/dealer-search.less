@@ -1,0 +1,48 @@
+// ==========================================================================
+// Dealer search component
+// ==========================================================================
+
+// block
+.dealer-search{
+	text-align: center;
+}
+
+// elements
+.dealer-search__placeholder{
+	transform: translateY(10px);
+	opacity: 0;
+	transition: all 0.2s @easeMitsubishi;
+}
+
+.dealer-search__holder{
+	.align--vertical;
+	.align--horizontal;
+}
+
+.dealer-search__field{
+	border-bottom: 2px solid @color-quinary;
+	width: 40rem;
+}
+
+.dealer-search__hint{
+	text-transform: inherit;
+}
+
+.dealer-search__input{
+	.h3;
+	border: 0;
+	outline: 0;
+	width: 100%;
+	background: transparent;
+}
+
+.dealer-search__icon{
+	font-size: 3rem;
+	color: @color-brand;
+}
+
+// modifiers
+.dealer-search__placeholder--active{
+	transform: translateY(0);
+	opacity: 1;
+}

@@ -1,0 +1,3 @@
+en:
+  ErrorMessages:
+    BusinessTypeRequired: '"Business type" is required'

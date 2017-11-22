@@ -1,0 +1,88 @@
+// ==========================================================================
+// Layout (l)
+// ==========================================================================
+
+// The layout file is for high level layout based styles.
+// These will largely be the grid and any container styles required.
+
+// Base
+// ==========================================================================
+
+html, body{
+	height: 100% !important;
+}
+
+body {
+	margin: 0;
+	font-size: 0;
+}
+
+// apply a natural box layout model to all elements BECAUSE IT'S AWESOME
+* {
+	box-sizing: border-box;
+}
+
+.js [v-cloak] {
+	display: none;
+}
+
+// Max width/responsive images
+// ==========================================================================
+img {
+	@media @not-lg {
+		max-width: 100%;
+		width: auto\9;
+		height: auto;
+		vertical-align: middle;
+		border: 0;
+	}
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+// fix issue with floating footer
+// this will ensure that the footer
+// stick to the bottom of the page
+.wrapper{
+	display: table;
+	width: 100%;
+	height: 100%;
+	table-layout: fixed;
+}
+
+.content{
+	display: table-row;
+	height: 100%;
+}
+
+.main, .barba-container{
+	height: 100%;
+}
+
+.container{
+	position: relative;
+	min-height: 100%;
+	will-change: filter;
+	transition: 0.4s filter @easeMitsubishi;
+
+	&:before{
+		content: '';
+		opacity: 0;
+		bottom: 0;
+		z-index: 10;
+		transition: 0.4s opacity @easeMitsubishi, ;
+		background: fade(@color-primary, 70%);
+		pointer-events: none;
+		.full-size(fixed);
+	}
+}
+
+// Grid definition
+// ==========================================================================
+& {
+	.grid(100%, 18, 20px, %, @extrasmall, @small, @medium, @large, @extralarge);
+}

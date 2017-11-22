@@ -1,0 +1,99 @@
+// ==========================================================================
+// Button
+// ==========================================================================
+
+// block
+.button{
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	border-radius: 7rem;
+	font-size: 0;
+	border: 0;
+	position: relative;
+	overflow: hidden;
+	user-select: none;
+	transform: translateZ(0);
+	background: @color-brand;
+	font-family: @font-family-bold;
+
+	span {
+		display: inline-block;
+		position: relative;
+		z-index: 1;
+		padding: 5rem 7rem;
+		.font-size(38, 32);
+
+		@media @md {
+			padding: 0.5rem 3rem;
+			.font-size(12, 40);
+		}
+	}
+
+	&:after{
+		content: '';
+		position: absolute;
+		width: 110%;
+		height: 100%;
+		left: -5%;
+		top: 0;
+		background: darken(@color-brand, 20%);
+		transition: all 0.4s @easeMitsubishi;
+		transform-origin: left;
+		transform: translateX(-95%) skew(0deg);
+	}
+
+	&:hover, &--active{
+		&:after{
+			transform: translateX(0) skew(-25deg);
+		}
+	}
+
+	&:focus{
+		outline: 0;
+	}
+
+
+}
+
+// modifiers
+.button--chromeless{
+	background: none;
+
+	span, i {
+		transition: all 0.4s @easeMitsubishi;
+		color: @color-brand;
+	}
+
+	&:before, &:after{
+		display: none;
+	}
+
+	&:hover{
+		span, i{
+			color: darken(@color-brand, 20%);
+		}
+	}
+}
+
+.button--dark{
+	background-color: @color-tertiary;
+
+	&:after{
+		background:  darken(@color-tertiary, 20%);
+	}
+}
+
+.button--model{
+	background-color: @color-secondary;
+
+	&:after{
+		background:  darken(@color-secondary, 20%);
+		opacity: 0.5;
+	}
+}
+
+.button--uppercase{
+	text-transform: uppercase;
+}

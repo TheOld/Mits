@@ -1,0 +1,12 @@
+// ==========================================================================
+// Transitions (can be used on every Vue transition directive)
+// ==========================================================================
+
+// zoom and fade
+.zoom-fade-enter-active, .zoom-fade-leave-active {
+	transition: all 0.5s;
+}
+.zoom-fade-enter, .zoom-fade-leave-to {
+	transform: scale(2);
+	opacity: 0;
+}

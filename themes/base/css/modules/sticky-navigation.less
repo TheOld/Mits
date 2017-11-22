@@ -1,0 +1,36 @@
+// ==========================================================================
+// Sticky navigation component
+// ==========================================================================
+
+// block
+.sticky-navigation{
+}
+
+// elements
+
+.sticky-navigation__container{
+	border-bottom: 1px solid fade(@color-quinary, 20%);
+}
+
+.sticky-navigation__logo{
+	float: left;
+	height: 2rem;
+
+	img, svg{
+		height: 100%;
+		width: auto;
+		fill: @color-secondary;
+	}
+}
+
+// modifiers
+.sticky-navigation--dark{
+	background: @color-secondary;
+
+	a{
+		color: @color-primary;
+	}
+	svg, path{
+		fill: @color-primary;
+	}
+}

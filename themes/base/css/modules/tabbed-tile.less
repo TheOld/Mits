@@ -1,0 +1,49 @@
+// ==========================================================================
+// Tabbed tile
+// ==========================================================================
+
+// block
+.tabbed-tile{
+	position: relative;
+	.block-drop-shadow;
+
+	&:hover{
+		.tabbed-tile__description{
+
+			& > :nth-child(1) {
+				transform: translateY(-15px);
+			}
+
+			& > :nth-child(2) {
+				transform: translateY(-20px);
+			}
+		}
+	}
+}
+
+// elements
+.tabbed-tile__image{
+	height: 0;
+	overflow: hidden;
+	padding-bottom: 119.26%;
+
+	img{
+		width: 100%;
+		height: auto;
+	}
+}
+
+.tabbed-tile__description{
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	width: 100%;
+
+	& > * {
+		transition: all 0.5s @easeMitsubishi;
+	}
+
+	& > :nth-child(2){
+		transition-delay: 0.1s;
+	}
+}

@@ -1,0 +1,84 @@
+// ==========================================================================
+// Header (header)
+// ==========================================================================
+
+// block
+.header{
+	font-family: @font-family-bold;
+	color: @font-light;
+	width: 100%;
+	transition: all 0.5s @easeMitsubishi;
+}
+
+// elements
+.header__inner{
+	position: relative;
+	height: 14rem;
+	border-bottom: 1px solid fade(@font-light, 20%);
+}
+
+.header__logo{
+	.vertical-align();
+	float: left;
+	width: 7.5rem;
+	max-width: 7.5rem;
+	height: auto;
+	max-height: 9.5rem;
+
+	img, svg {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	.text{
+		fill: @color-secondary;
+	}
+}
+
+.header__utility {
+	width: 100%;
+	position: absolute;
+	top: 3.7rem;
+	left: 0px;
+	overflow: auto;
+}
+
+.header__navigation{
+	text-align: right;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+// modifiers
+.header--opaque{
+	background: @color-secondary;
+	box-shadow: 0 0 10px fade(@color-primary, 10%), 0 0 5px fade(@color-primary, 10%);
+
+	.header__utility {
+		a, i {
+			color: @color-quinary;
+		}
+	}
+
+	.header__navigation {
+		a, i {
+			color: @color-primary;
+		}
+	}
+
+	.header__logo {
+		.text{
+			fill: @color-primary;
+		}
+	}
+}
+
+.header--border{
+	box-shadow: none;
+
+	.header__inner {
+		border-bottom: 1px solid fade(@color-quinary, 20%);
+	}
+}

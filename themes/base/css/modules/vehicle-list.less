@@ -1,0 +1,74 @@
+// ==========================================================================
+// List vehicle models
+// ==========================================================================
+
+// block
+.vehicle-list{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	position: relative;
+	font-family: @font-family-bold;
+	cursor: pointer;
+}
+
+// elements
+.vehicle-list__images{
+	position: relative;
+	height: 0;
+	padding-bottom: 37.6%;
+	text-align: center;
+}
+
+.vehicle-list__wires, .vehicle-list__photo{
+	.horizontal-align(absolute);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	img{
+		width: 100%;
+		height: auto;
+	}
+}
+
+.vehicle-list__wires{
+	transition: opacity 1s ease;
+	will-change: opacity;
+	transition-delay: 0.2s;
+}
+
+.vehicle-list__photo{
+	overflow: hidden;
+	transition: 1s @easeMitsubishi;
+	clip-path: polygon(-40% 0%, 0% 0%, -10% 100%, -50% 100%);
+
+	// microsoft override
+	.isMicrosoft({ opacity: 0; });
+}
+
+.vehicle-list__name{
+	font-size: 1.4rem;
+	display: block;
+}
+
+.vehicle-list__item{
+	width: 8%;
+	margin: 0 1%;
+	user-select: none;
+
+	&:hover, &--active{
+		.vehicle-list__photo{
+			clip-path: polygon(0% 0%, 140% 0%, 100% 100%, 0% 100%);
+
+			// IE and Edge doesn't support clip-path
+			// use an opacity transition instead
+			.isMicrosoft({ opacity: 1; });
+		}
+		.vehicle-list__wires{
+			opacity: 0;
+		}
+	}
+}

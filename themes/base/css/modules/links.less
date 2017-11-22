@@ -1,0 +1,94 @@
+// ==========================================================================
+// Links
+// ==========================================================================
+
+// block
+.links{
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	border-radius: 5rem;
+	border: 0;
+	overflow: hidden;
+	text-transform: uppercase;
+	font-size: 4rem;
+	position: relative;
+	color: @color-brand;
+	font-family: @font-family-bold;
+	will-change: transform;
+
+	@media @md {
+		font-size: 1.2rem;
+	}
+}
+
+// modifiers
+.links--social-facebook{
+	color: @color-primary;
+	&:extend(.icon-facebook-square all);
+	&:after{
+		color: @color-brand;
+	}
+	&:before{
+		color: #3b5998;
+	}
+}
+
+.links--social-twitter{
+	color: @color-primary;
+	&:extend(.icon-twitter all);
+	&:after{
+		color: @color-brand;
+	}
+	&:before{
+		color: #1da1f2;
+	}
+}
+
+.links--arrow-left, &--arrow-right{
+	&:before, &:after{
+		display: inline-block;
+		transition: all 0.3s ease-in-out;
+	}
+}
+
+.links--arrow-right{
+	&:after {
+		content: '➔';
+		margin-left: 0.5rem;
+		transition: all 0.3s ease-in-out;
+		display: inline-block;
+	}
+
+	&:hover{
+		&:after{
+			transform: translateX(-0.5rem);
+		}
+	}
+}
+
+.links--arrow-left{
+	&:before {
+		content: '➔';
+		margin-right: 0.5rem;
+		transform: scaleX(-1);
+	}
+
+	&:hover{
+		&:before{
+			transform: scaleX(-1) translateX(-0.5rem);
+		}
+	}
+}
+
+.links--inactive{
+	color: @color-quinary;
+	cursor: not-allowed;
+
+	&:hover{
+		&:before{
+			transform: scaleX(-1) translateX(0rem);
+		}
+	}
+}

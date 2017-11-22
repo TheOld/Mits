@@ -1,0 +1,47 @@
+// ==========================================================================
+// Page style definition (global page style definition like margin...)
+// ==========================================================================
+
+// block
+.page{
+	overflow-x: hidden;
+	min-height: 100%;
+}
+
+// modifiers
+.page--pt{
+	padding-top: 21rem;
+}
+
+.page--npt{
+	margin-top: -21rem;
+}
+
+.page--xpt{
+	padding-top: 14rem;
+}
+
+.page--pb{
+	padding-bottom: 14rem;
+}
+
+.page--py{
+	padding-top: 21rem;
+	padding-bottom: 14rem;
+}
+
+.page--light{
+	background-color: @color-secondary;
+}
+
+.page--grey{
+	background-color: fade(@color-septenary, 30%);
+}
+
+.page--dark{
+	background-color: @color-tertiary;
+}
+
+.page--noise{
+	.background-noise();
+}

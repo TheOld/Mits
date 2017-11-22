@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Heyday style guide template">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+	<title>{{options.title}}</title>
+	<link rel="stylesheet" href="kss-assets/kss.css">
+	{{{styles}}}
+</head>
+<body class="kss" id="kss-node">
+	<aside class="kss__sidebar">
+		<nav class="kss__nav">
+			<a href="index.html" class="logo">
+				{{options.title}}
+			</a>
+			<ul class="kss__navmenu">
+				{{#each menu}}
+					<li class="kss__navmenuitem">
+						<a class="{{#if isActive}} current{{/if}}" href="section-{{referenceURI}}.html">{{header}} {{active}}</a>
+					</li>
+				{{/each}}
+			</ul>
+		</nav>
+	</aside>
+	<main class="kss__main {{#each menu}}{{#if isActive}}{{referenceURI}}{{/if}}{{/each}}" role="main">
+		<article class="kss__content">
+			{{#if homepage}}
+				<section class="kss__section">
+					<div class="kss__guide">
+						<div class="kss__guidecontent">
+							{{{homepage}}}
+						</div>
+					</div>
+				</section>
+			{{else}}
+				{{#each sections}}
+					{{#if @first}}
+						<h1 class="kss__guideintro">{{title}}</h1>
+					{{else}}
+						<section class="kss__section">
+							<div class="kss__guide">
+								<h2 class="kss__guidetitle">{{referenceNumber}} {{header}}</h2>
+								<div class="kss__guidecontent">
+									{{#if description}}
+										{{{description}}}
+									{{/if}}
+
+									{{#if example}}
+										<p class="kss__guidecodeheading"><span>Example</span></p>
+										<pre class="kss__guidecode">
+<code class="prettyprint prettyprinted lang-html">{{markup}}</code>
+										</pre>
+									{{/if}}
+								</div>
+
+								<div class="kss__guidecontent">
+									{{#if modifiers}}
+										<h3 class="kss__guidesubheading">Default styling</h3>
+									{{/if}}
+									{{{example}}}
+								</div>
+
+								{{#each modifiers}}
+									<div class="kss__guidecontent">
+										<h3 class="kss__guidesubheading">{{description}}</h3>
+										<pre class="kss__guidecode--inline"><code class="prettyprint prettyprinted lang-css">{{name}}</code></pre>
+										{{{markup}}}
+									</div>
+								{{/each}}
+
+								{{#if sourceFile.name}}
+									<p class="kss__guidereference">
+										Source: {{sourceFile.name}}, line {{sourceFile.line}}
+									</p>
+								{{/if}}
+							</div>
+						</section>
+					{{/if}}
+				{{/each}}
+			{{/if}}
+		</article>
+	</main>
+
+	<!-- SCRIPTS -->
+	<script src="kss-assets/kss.js"></script>
+	<script src="kss-assets/scrollspy.js"></script>
+	<script src="kss-assets/prettify.js"></script>
+	<script>
+		prettyPrint();
+		var spy = new ScrollSpy('#kss-node', {
+			nav: '.kss-nav__menu-child > li > a',
+			className: 'is-in-viewport'
+		});
+	</script>
+	{{{scripts}}}
+
+	<!-- Automatically built using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+</body>
+</html>
